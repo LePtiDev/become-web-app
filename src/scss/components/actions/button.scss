@@ -1,0 +1,627 @@
+/////////////////////////////////////
+///////////  All button /////////////
+/////////////////////////////////////
+
+// Mixin
+@import "../../mixins/button.scss";
+
+//================================================================ Button Text
+// Primary
+.button-primary--regular {
+  @include button-regular();
+  @include hover-primary($primary-button-hover-color);
+  @include icon($primary-button-icon-color);
+  background-color: rgba($primary-button-color, 1);
+  border: solid 1px $primary-button-border-color;
+  span {
+    color: $primary-button-text-color;
+    vertical-align: middle;
+  }
+}
+.button-primary--small {
+  @include button-small();
+  @include hover-primary($primary-button-hover-color);
+  @include icon($primary-button-icon-color);
+  background-color: rgba($primary-button-color, 1);
+  border: solid 1px $primary-button-border-color;
+  span {
+    color: $primary-button-text-color;
+  }
+}
+
+// Secondary
+.button-secondary--regular {
+  @include button-regular();
+  @include hover-secondary($secondary-button-hover-color);
+  @include icon($secondary-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $secondary-button-border-color;
+  span {
+    color: $secondary-button-text-color;
+  }
+}
+.button-secondary--small {
+  @include button-small();
+  @include hover-secondary($secondary-button-hover-color);
+  @include icon($secondary-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $secondary-button-border-color;
+  span {
+    color: $secondary-button-text-color;
+  }
+}
+
+// Tertiary
+.button-terciary--regular {
+  @include button-regular();
+  @include hover-secondary($tertiary-button-hover-color);
+  @include icon($tertiary-button-icon-color);
+  background-color: transparent;
+  border: solid 1px $tertiary-button-border-color;
+  span {
+    color: $tertiary-button-text-color;
+  }
+}
+.button-terciary--small {
+  @include button-small();
+  @include hover-secondary($tertiary-button-hover-color);
+  @include icon($tertiary-button-icon-color);
+  background-color: transparent;
+  border: solid 1px $tertiary-button-border-color;
+  span {
+    color: $tertiary-button-text-color;
+  }
+}
+
+// Disable
+.button-disable--regular {
+  @include button-regular();
+  @include hover-secondary($disable-button-hover-color);
+  @include icon($disable-button-icon-color);
+  background-color: rgba($disable-button-color, 1);
+  border: solid 1px $disable-button-border-color;
+  cursor: not-allowed;
+  span {
+    color: $disable-button-text-color;
+  }
+}
+.button-disable--small {
+  @include button-small();
+  @include hover-secondary($disable-button-hover-color);
+  @include icon($disable-button-icon-color);
+  background-color: rgba($disable-button-color, 1);
+  border: solid 1px $disable-button-border-color;
+  cursor: not-allowed;
+  span {
+    color: $disable-button-text-color;
+  }
+}
+
+// Error
+.button-error--regular {
+  @include button-regular();
+  @include hover-secondary($error-button-hover-color);
+  @include icon($error-button-icon-color);
+  background-color: rgba($error-button-color, 1);
+  border: solid 1px $error-button-border-color;
+  span {
+    color: $error-button-text-color;
+  }
+}
+.button-error--small {
+  @include button-small();
+  @include hover-secondary($error-button-hover-color);
+  @include icon($error-button-icon-color);
+  background-color: rgba($error-button-color, 1);
+  border: solid 1px $error-button-border-color;
+  span {
+    color: $error-button-text-color;
+  }
+}
+
+// Warning
+.button-warning--regular {
+  @include button-regular();
+  @include hover-secondary($warning-button-hover-color);
+  @include icon($warning-button-icon-color);
+  background-color: rgba($warning-button-color, 1);
+  border: solid 1px $warning-button-border-color;
+  span {
+    color: $warning-button-text-color;
+  }
+}
+.button-warning--small {
+  @include button-small();
+  @include hover-secondary($warning-button-hover-color);
+  @include icon($warning-button-icon-color);
+  background-color: rgba($warning-button-color, 1);
+  border: solid 1px $warning-button-border-color;
+  span {
+    color: $warning-button-text-color;
+  }
+}
+//================================================================ Button Icon
+
+// Primary
+.button-primary-icon--regular {
+  @include button-icon-regular();
+  @include hover-primary($primary-button-hover-color);
+  @include icon($primary-button-icon-color);
+  background-color: rgba($primary-button-color, 1);
+  border: solid 1px $primary-button-border-color;
+}
+.button-primary-icon--small {
+  @include button-icon-small();
+  @include hover-primary($primary-button-hover-color);
+  @include icon($primary-button-icon-color);
+  background-color: rgba($primary-button-color, 1);
+  border: solid 1px $primary-button-border-color;
+}
+
+// Secondary
+.button-secondary-icon--regular {
+  @include button-icon-regular();
+  @include hover-secondary($secondary-button-hover-color);
+  @include icon($secondary-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $secondary-button-border-color;
+}
+.button-secondary-icon--small {
+  @include button-icon-small();
+  @include hover-secondary($secondary-button-hover-color);
+  @include icon($secondary-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $secondary-button-border-color;
+}
+
+// Tertiary
+.button-terciary-icon--regular {
+  @include button-icon-regular();
+  @include hover-secondary($tertiary-button-hover-color);
+  @include icon($tertiary-button-icon-color);
+  background-color: transparent;
+  border: solid 1px $tertiary-button-border-color;
+}
+.button-terciary-icon--small {
+  @include button-icon-small();
+  @include hover-secondary($tertiary-button-hover-color);
+  @include icon($tertiary-button-icon-color);
+  background-color: transparent;
+  border: solid 1px $tertiary-button-border-color;
+}
+
+// Error
+.button-error-icon--regular {
+  @include button-icon-regular();
+  @include hover-secondary($error-button-hover-color);
+  @include icon($error-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $error-button-border-color;
+}
+.button-error-icon--small {
+  @include button-icon-small();
+  @include hover-secondary($error-button-hover-color);
+  @include icon($error-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $error-button-border-color;
+}
+
+// Warning
+.button-warning-icon--regular {
+  @include button-icon-regular();
+  @include hover-secondary($warning-button-hover-color);
+  @include icon($warning-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $warning-button-border-color;
+}
+.button-warning-icon--small {
+  @include button-icon-small();
+  @include hover-secondary($warning-button-hover-color);
+  @include icon($warning-button-icon-color);
+  background-color: rgba($secondary-button-color, 1);
+  border: solid 1px $warning-button-border-color;
+}
+
+//================================================================ Button Loading
+
+.loading {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+.loading div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  margin: 5px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  animation: loading 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// TO DELETE AFTER REFACTO
+
+//============================================ Buttons
+.primary-button,
+.secondary-button {
+  border: 1px solid white; // OK
+  background-color: $myc-blue !important; // OK
+  padding-top: 16px !important; // OK
+  padding-bottom: 16px !important; // OK
+  .v-btn__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    i {
+      margin-right: 8px;
+    }
+    span {
+      color: white;
+      font-family: Source Sans Pro;
+      text-transform: lowercase;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+  &:hover {
+    border: 1px solid $myc-blue;
+    transition: none;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    &::before {
+      display: none;
+    }
+    .v-btn__content {
+      i {
+        color: $myc-blue !important;
+        caret-color: $myc-blue !important;
+      }
+      span {
+        color: $myc-blue;
+      }
+    }
+  }
+}
+
+.secondary-button {
+  background-color: white !important;
+  border: 1px solid $myc-blue;
+  .v-btn__content {
+    span {
+      color: $myc-blue;
+    }
+  }
+  &:hover {
+    background-color: $myc-backgroud-forms !important;
+  }
+}
+
+.primary-outline-button {
+  border: 1px solid $myc-light-grey;
+  background-color: transparent !important;
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+  .v-btn__content {
+    i {
+      margin-right: 8px;
+    }
+    span {
+      color: $myc-blue;
+      font-family: Source Sans Pro;
+      text-transform: lowercase;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 24px;
+      &:first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+  &:hover {
+    border: 1px solid $myc-blue;
+    transition: none;
+    background-color: transparent !important;
+    opacity: 1 !important;
+    &::before {
+      display: none;
+    }
+    .v-btn__content {
+      i {
+        color: $myc-blue !important;
+        caret-color: $myc-blue !important;
+      }
+      span {
+        color: $myc-blue;
+      }
+    }
+  }
+}
+
+button.button-back {
+  position: fixed;
+  top: 40px;
+  left: 290px;
+  z-index: 6;
+  @media screen and (max-width: 1250px) {
+    position: fixed;
+    top: 40px;
+    left: 22%;
+  }
+  @media screen and (max-width: 1065px) {
+    position: fixed;
+    top: 40px;
+    left: 26%;
+  }
+  @media screen and (max-width: 950px) {
+    position: fixed;
+    top: 115px;
+    left: 13%;
+  }
+  @media screen and (max-width: 770px) {
+    position: fixed;
+    top: 115px;
+    left: 12px;
+  }
+}
+
+.button-seconday {
+  border-radius: 2px;
+  width: auto !important;
+  height: auto !important;
+  padding: 5px 20px !important;
+  background-color: white !important;
+  border: 1px solid $myc-button-blue !important;
+  span {
+    color: $myc-button-blue;
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+  &:hover {
+    border: 1px solid transparent !important;
+    background-color: $myc-button-blue !important;
+    span {
+      color: white;
+    }
+  }
+}
+
+.input-submit {
+  margin-top: 30px;
+  @media screen and (max-width: 620px) {
+    width: 100%;
+  }
+  div div {
+    max-width: 416px !important;
+    @media screen and (max-width: 620px) {
+      height: 50px;
+      width: 100%;
+      max-width: 100% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    button {
+      width: 350px !important;
+      background-color: #3772ff !important;
+      border: solid 1px #3772ff !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      border-radius: 4px;
+      @media screen and (max-width: 620px) {
+        height: 35px;
+        width: 90vw !important;
+      }
+      &:hover {
+        background-color: white !important;
+        span {
+          color: #3772ff;
+        }
+      }
+      span {
+        color: white;
+      }
+    }
+  }
+}
+
+//////////////////
+// Button primary
+//////////////////
+.button-sm-primary {
+  display: flex;
+  background-color: $myc-blue;
+  padding: 5px 17px 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 3px;
+  cursor: pointer;
+  i {
+    margin-right: 10px;
+  }
+  span {
+    color: white;
+    font-size: 14px;
+  }
+}
+
+.button-sm-primary-outline {
+  display: flex;
+  background-color: transparent;
+  border: 1px solid $myc-blue;
+  padding: 5px 17px 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 3px;
+  cursor: pointer;
+  span {
+    color: $myc-blue;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+//////////////////
+// Button disable
+//////////////////
+.button-sm-disable {
+  display: flex;
+  background-color: $myc-light-grey;
+  border: 1px solid $myc-dark-grey;
+  opacity: 0.5;
+  padding: 5px 17px 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 3px;
+  cursor: not-allowed;
+  span {
+    color: $myc-secondary-information;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+//////////////////
+// Button outline
+//////////////////
+.button-sm-outline {
+  display: flex;
+  background-color: transparent;
+  border: 1px solid $myc-light-grey;
+  padding: 5px 17px 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 3px;
+  cursor: pointer;
+  span {
+    color: $myc-dark;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+//////////////////
+// Button disable
+//////////////////
+.button-sm-disable {
+  display: flex;
+  background-color: $myc-light-grey;
+  border: 1px solid $myc-dark-grey;
+  opacity: 0.5;
+  padding: 5px 17px 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 3px;
+  cursor: not-allowed;
+  span {
+    color: $myc-secondary-information;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+//////////////////
+// Button outline
+//////////////////
+.button-sm-outline {
+  display: flex;
+  background-color: transparent;
+  border: 1px solid $myc-light-grey;
+  padding: 5px 17px 5px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border-radius: 3px;
+  cursor: pointer;
+  span {
+    color: $myc-dark;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+//////////////////
+// Button absolute
+//////////////////
+.button-add-absolute {
+  @media screen and (max-width: $mobile) {
+    position: fixed;
+    height: 54px !important;
+    width: 54px !important;
+    border-radius: 30px;
+    padding: 0;
+    right: 14px;
+    bottom: 82px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    span {
+      display: none;
+    }
+    i {
+      font-size: 30px !important;
+      margin: 0 !important;
+    }
+  }
+  @media screen and (max-width: $tablet) and (min-width: ($mobile + 1px)) {
+    position: fixed;
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+    padding: 0;
+    right: 24px;
+    bottom: 98px;
+    z-index: 40;
+    span {
+      display: none;
+    }
+    i {
+      font-size: 30px !important;
+    }
+  }
+}
+
+.btn-newpatient {
+  font-family: Source Sans Pro;
+  text-transform: none !important;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.1;
+  color: #3772ff;
+  text-decoration: underline;
+}
+
+.btn-datatable .v-btn__content {
+  padding: 0px;
+}

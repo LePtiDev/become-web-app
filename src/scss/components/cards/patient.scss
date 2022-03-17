@@ -1,0 +1,163 @@
+/////////////////////////////////////
+///////////  Patient Card ///////////
+/////////////////////////////////////
+
+.patient-male {
+  // Mettre le fond avec le personnage
+}
+
+.patient-women {
+  // Mettre le fond avec le personnage
+}
+
+.container-header-patient {
+  display: flex;
+  @include breakpoint(md) {
+    flex-direction: column;
+  }
+  .patient-personal-information {
+    width: 211px;
+    background-color: #d5e7ff;
+    padding: 16px;
+    border-radius: 4px;
+    margin-right: 16px;
+
+    @include breakpoint(md) {
+      width: 100%;
+      margin-bottom: 16px;
+      margin-right: 0px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .patient-name {
+      @include text-base---medium;
+      text-transform: capitalize;
+      display: block;
+      color: map-get($colors, cool-gray--600);
+      @include breakpoint(md) {
+        margin-right: 8px;
+      }
+    }
+    .patient-age {
+      @include text-base---regular;
+      color: map-get($colors, cool-gray--600);
+      display: block;
+      margin-bottom: 8px;
+      margin-left: 0px;
+      @include breakpoint(md) {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.container-card-patient {
+  width: 100%;
+  background-color: map-get($colors, white);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: $shadow-base;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  @include breakpoint(sm) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-patient {
+    background: linear-gradient(62.04deg, map-get($colors, blue--200) 1%, map-get($colors, blue--100) 100%);
+    padding: 12px;
+    border-radius: 4px;
+    width: 20%;
+    @include breakpoint(md) {
+      width: 100%;
+      display: flex;
+      margin-bottom: 8px;
+      position: relative;
+    }
+    .patient-name {
+      display: block;
+      @include text-lg---medium;
+      text-transform: capitalize;
+      color: map-get($colors, cool-gray--600);
+      @include breakpoint(md) {
+        margin-right: 12px;
+      }
+    }
+    .container-age-sexe-waitingroom {
+      display: flex;
+      align-items: center;
+      .patient-age-sexe {
+        display: block;
+        @include text-lg---regular;
+        color: map-get($colors, cool-gray--600);
+        margin-right: 8px;
+      }
+      .chip-waitingroom {
+        @include breakpoint(md) {
+          position: absolute;
+          right: 12px;
+        }
+        .v-icon {
+          @include breakpoint(xs) {
+            margin: 0;
+          }
+        }
+        .text-waiting-room {
+          @include breakpoint(xs) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .informations-section {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    @include breakpoint(md) {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+    .container-information {
+      padding: 8px 24px;
+      border-right: solid 1px map-get($colors, cool-gray--100);
+      @include breakpoint(sm) {
+        padding: 4px 0px;
+        border-right: none;
+      }
+      &:nth-child(2) {
+        @include breakpoint(sm) {
+          padding: 4px 0px;
+        }
+      }
+      &:last-child {
+        border-right: none;
+      }
+      .information-row {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-right: 8px;
+        &:first-child {
+          margin-bottom: 8px;
+        }
+        .label-information {
+          margin-right: 8px;
+          @include text-sm---medium;
+          text-transform: uppercase;
+          color: map-get($colors, cool-gray--400);
+        }
+        .content-information {
+          @include text-sm---regular;
+          color: map-get($colors, cool-gray--700);
+        }
+      }
+    }
+  }
+}

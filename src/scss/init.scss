@@ -1,0 +1,109 @@
+/////////////////////////////////////
+///////////   Init File   ///////////
+/////////////////////////////////////
+
+// Constante
+@import "./settings/colors.scss";
+@import "./settings/reset.scss";
+@import "./settings/font.scss";
+@import "./settings/setup.scss";
+
+// Général
+@import "./formulate.scss";
+
+// Helpers
+@import "./helpers/responsive-helpers.scss";
+@import "./helpers/global-helpers.scss";
+@import "./helpers/text-helpers.scss";
+@import "./helpers/input-helpers.scss";
+
+// Vuetify
+@import "./vuetify/_variables.scss";
+@import "./vuetify/surcharge.scss";
+
+// Components - Action
+@import "./components/actions/button.scss";
+@import "./components/actions/toggle-button.scss";
+
+// Components - Dialog
+@import "./components/dialog/global.scss";
+
+// Components - Layout
+@import "./components/layouts/layout.scss";
+@import "./components/layouts/page-header.scss";
+@import "./components/layouts/header-patient.scss";
+@import "./components/layouts/form.scss";
+@import "./components/layouts/header.scss";
+
+// Components - Notification
+@import "./components/notifications/snackbar.scss";
+@import "./components/notifications/cookie.scss";
+@import "./components/notifications/chip.scss";
+
+// Components - Tables
+@import "./components/tables/table.scss";
+
+// Components - Navigations
+@import "./components/navigations/menu.scss";
+@import "./components/navigations/navigation-date.scss";
+@import "./components/navigations/navigation-page.scss";
+
+// Components - List
+@import "./components/list/file.scss";
+@import "./components/list/actions.scss";
+
+// Components - Discussion
+@import "./components/discussion/file.scss";
+
+// Components - Inputs
+@import "./components/inputs/input-select.scss";
+@import "./components/inputs/input-text.scss";
+@import "./components/inputs/input-date.scss";
+@import "./components/inputs/input-signature.scss";
+@import "./components/inputs/input-dropzone.scss";
+@import "./components/inputs/input-autocomplete.scss";
+@import "./components/inputs/input-textarea.scss";
+@import "./components/inputs/input-concentration.scss";
+@import "./components/inputs/input-phone.scss";
+@import "./components/inputs/input-checkbox.scss";
+@import "./components/inputs/input-links.scss";
+@import "./components/inputs/input-QR-code.scss";
+@import "./components/inputs/input-file.scss";
+@import "./components/inputs/input-switch.scss";
+@import "./components/inputs/input-search.scss";
+@import "./components/inputs/input-little.scss";
+
+// Components - Cards
+@import "./components/cards/health-data.scss";
+@import "./components/cards/patient.scss";
+@import "./components/cards/global.scss";
+@import "./components/cards/investigation.scss";
+@import "./components/cards/exam.scss";
+@import "./components/cards/appointment.scss";
+// @import "./components/cards/admission.scss";
+@import "./components/cards/vital-signs.scss";
+@import "./components/cards/medevent-history.scss";
+
+// Components - Vital signs
+@import "./components/healthData/vitalsigns.scss";
+@import "./components/cards/file.scss";
+
+// Components - Timelines
+@import "./components/timelines/exams.scss";
+
+// Components - Modules - Checkup
+@import "./components/modules/checkup/list-item.scss";
+
+// Components - Modules - Outpatient
+@import "./components/modules/outpatient/card.scss";
+@import "./components/modules/outpatient/dialog.scss";
+@import "./components/tiptap/tiptap.scss";
+
+// Components - Modules - Outpatient
+@import "./components/modules/caseManagement/synthesis.scss";
+
+// Views
+@import "./views/admin.scss";
+@import "./views/outpatients.scss";
+@import "./views/investigation.scss";
+@import "./views/404.scss";

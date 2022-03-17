@@ -1,0 +1,69 @@
+/////////////////////////////////////
+//////////////  Setup ///////////////
+/////////////////////////////////////
+
+//================================================================ Global
+$primary-color: "blue"; // default: indigo
+$secondary-color: "cool-gray"; // default: cool-gray
+$terciary-color: "cool-gray"; // default: white
+$error-color: "rose"; // default:
+$warning-color: "orange"; // default:
+
+$font: ""; // default: Inter
+$font-type: ""; // default: rem
+
+//================================================================ App
+$app-background: map-get($colors, blue--100);
+
+//================================================================ Sidebar
+$sidebar-width: 200px;
+
+//================================================================ Form
+$myc-backgroud-forms: map-get($colors, blue--100);
+
+//================================================================ Layout
+$layout-gap: 12px;
+$layout-breakpoint-xs: 600px;
+$layout-breakpoint-sm: 960px;
+$layout-breakpoint-md: 1264px;
+$layout-breakpoint-lg: 1904px;
+$layout-breakpoint-xl: 1905px;
+
+//================================================================ Button
+$primary-button-color: map-get($colors, $primary-color + "--500");
+$primary-button-hover-color: map-get($colors, $primary-color + "--400");
+$primary-button-border-color: transparent;
+$primary-button-text-color: map-get($colors, white);
+$primary-button-icon-color: map-get($colors, white);
+
+$secondary-button-color: map-get($colors, $secondary-color + "--00");
+$secondary-button-hover-color: map-get($colors, $secondary-color + "--50");
+$secondary-button-border-color: map-get($colors, $secondary-color + "--200");
+$secondary-button-text-color: map-get($colors, $secondary-color + "--700");
+$secondary-button-icon-color: map-get($colors, $secondary-color + "--400");
+
+$tertiary-button-color: map-get($colors, $terciary-color + "--00");
+$tertiary-button-hover-color: map-get($colors, $primary-color + "--50");
+$tertiary-button-border-color: transparent;
+$tertiary-button-text-color: map-get($colors, $primary-color + "--600");
+$tertiary-button-icon-color: map-get($colors, $primary-color + "--600");
+
+$disable-button-color: map-get($colors, $terciary-color + "--100");
+$disable-button-hover-color: map-get($colors, $terciary-color + "--100");
+$disable-button-border-color: transparent;
+$disable-button-text-color: map-get($colors, $terciary-color + "--400");
+$disable-button-icon-color: map-get($colors, $terciary-color + "--400");
+
+$app-background: map-get($colors, blue--100);
+
+$error-button-color: map-get($colors, $error-color + "--500");
+$error-button-hover-color: map-get($colors, $error-color + "--400");
+$error-button-border-color: transparent;
+$error-button-text-color: map-get($colors, white);
+$error-button-icon-color: map-get($colors, white);
+
+$warning-button-color: map-get($colors, $warning-color + "--500");
+$warning-button-hover-color: map-get($colors, $warning-color + "--400");
+$warning-button-border-color: transparent;
+$warning-button-text-color: map-get($colors, white);
+$warning-button-icon-color: map-get($colors, white);

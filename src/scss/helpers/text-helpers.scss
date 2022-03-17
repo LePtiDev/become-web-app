@@ -1,0 +1,45 @@
+/////////////////////////////////////
+///////////  Text helpers ///////////
+/////////////////////////////////////
+
+.title-card{
+    @include text-base---medium;
+    color: map-get($colors, cool-gray--700);
+    padding: 2px 0;
+}
+
+.title-in-card{
+    display: block;
+    @include text-base---medium;
+    color: map-get($colors, cool-gray--700);
+    padding: 2px 0;
+    margin-bottom: 8px;
+}
+
+//============================================ Font size
+@for $i from 5 through 100 {
+    .fs#{$i}{
+        font-size: $i+px;
+    }
+}
+
+//============================================ Text color
+@each $name, $color in $colors {
+    .text-color-#{"" + $name}{
+        color: $color;
+    }
+}
+
+.page-title{
+    font-size: 24px;
+    color: $myc-dark;
+    font-weight: bold;
+    span{
+        color: $myc-grey;
+        font-weight: normal;
+    }
+}
+
+.uppercase{
+    text-transform: uppercase;
+}

@@ -1,0 +1,213 @@
+.container-navbar {
+  z-index: 1000;
+  width: $sidebar-width !important;
+  box-shadow: $shadow-lg;
+  box-sizing: border-box !important;
+  background-color: map-get($colors, white);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: 400ms;
+
+  @include breakpoint(sm) {
+    width: 100%;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    transform: translateX(-100vw);
+  }
+
+  .container-top-nav {
+    width: 100%;
+    height: auto;
+    .container-nav-logo {
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      .become-logo {
+        width: 130px;
+        margin-right: 16px;
+      }
+      .user-logo {
+        width: auto;
+        height: 33px;
+      }
+    }
+    .container-all-link {
+      margin-top: 16px;
+      .nav-link {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        i {
+          color: map-get($colors, blue--600) !important;
+          font-size: 20px;
+          margin-right: 16px;
+        }
+        .container-all-link {
+          margin-top: 16px;
+          .nav-link {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 6px;
+            border-radius: 4px;
+            cursor: pointer;
+            i {
+              color: map-get($colors, blue--600) !important;
+              font-size: 20px;
+              margin-right: 16px;
+            }
+          }
+        }
+        .link-name {
+          @include text-base---medium;
+          color: map-get($colors, cool-gray-700);
+        }
+        &:hover {
+          .link-name {
+            color: map-get($colors, blue--600);
+          }
+        }
+      }
+      .link-active {
+        background-color: map-get($colors, blue--50);
+        .link-name {
+          color: map-get($colors, blue--600);
+        }
+      }
+      .container-second-link {
+        padding-left: 16px;
+        margin: 4px 0;
+        .nav-second-link {
+          cursor: pointer;
+          padding: 3px 0px;
+          padding-left: 32px;
+          border-left: solid 2px map-get($colors, blue--400);
+          .link-name {
+            @include text-base---regular;
+            color: map-get($colors, cool-gray--400);
+          }
+          &:hover {
+            .link-name {
+              color: map-get($colors, blue--600);
+            }
+          }
+        }
+        .second-link-active {
+          .link-name {
+            color: map-get($colors, blue--600);
+          }
+        }
+      }
+    }
+  }
+  .container-bottom-nav {
+    width: 100%;
+    .container-name {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      .avatar {
+        @include text-sm---medium;
+        border-radius: 30px;
+        height: 32px !important;
+        width: 32px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: map-get($colors, white);
+        margin-right: 13px;
+        background-color: map-get($colors, blue--600);
+        text-transform: uppercase;
+      }
+      .username {
+        @include text-base---medium;
+        color: map-get($colors, cool-gray--700);
+        display: flex;
+        flex-wrap: wrap;
+        white-space: normal;
+        width: calc(100% - 45px);
+      }
+    }
+  }
+  .nav-spacer {
+    width: 100%;
+    height: 1px;
+    background-color: map-get($colors, cool-gray--200);
+    margin: 16px 0px;
+  }
+  .container-version {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 16px;
+    .app-name {
+      @include text-xs---regular;
+      text-decoration: none;
+      color: map-get($colors, cool-gray--400) !important;
+    }
+    .icon-reload {
+      @include text-lg---regular;
+      margin-left: 8px;
+    }
+  }
+}
+
+.tool-menu {
+  position: fixed !important;
+  left: 200px !important;
+  box-shadow: $shadow-md;
+  bottom: 20px !important;
+  top: auto !important;
+  min-width: auto !important;
+  .v-list-item__title {
+    @include text-base---regular;
+  }
+}
+
+.global-tool-menu {
+  box-shadow: $shadow-md;
+  min-width: auto !important;
+  .v-list-item__title {
+    @include text-base---regular;
+  }
+}
+
+// Burger menu
+.button-burger-nav {
+  display: none;
+  @include breakpoint(sm) {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    height: 40px;
+    width: 40px;
+    padding: 7px 8px;
+    z-index: 1000;
+    border-radius: 4px;
+    background-color: white;
+    border: 1px solid map-get($colors, cool-gray--100);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.nav-show-mobile {
+  @include breakpoint(sm) {
+    transition: 400ms;
+    transform: translateX(0%);
+  }
+}

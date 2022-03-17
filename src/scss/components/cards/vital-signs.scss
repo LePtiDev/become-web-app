@@ -1,0 +1,28 @@
+/////////////////////////////////////
+////////////  Vital Card ////////////
+/////////////////////////////////////
+
+.myc-vital-sign-card{
+    .container-bmi{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .height-line, .weight-line, .bmi-line{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-right: 8px;
+        }
+        .title-little-input{
+            @include text-sm---medium;
+            color: map-get($colors, cool-gray--400);
+            margin-right: 4px;
+        }
+        .unit{
+            @include text-sm---regular; 
+            color: map-get($colors, cool-gray--400);
+            margin-left: 4px;
+        }
+    }
+}

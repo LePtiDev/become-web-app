@@ -1,0 +1,62 @@
+/////////////////////////////////////
+///////////// File liste ////////////
+/////////////////////////////////////
+
+.container-all-file {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .nothing {
+      width: 100%;
+      text-align: center;
+      @include text-base---regular;
+    }
+    .container-file {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+      .container-name-icon {
+        padding: 5px;
+        border-radius: 4px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        position: relative;
+        &:hover {
+          cursor: pointer;
+        }
+        span {
+          color: map-get($colors , cool-gray--700);
+          margin-left: 16px;
+          @include text-base---medium;
+        }
+        .weight {
+          position: absolute;
+          right: 10px;
+          color: map-get($colors , cool-gray--400);
+          @include text-base---medium;
+        }
+      }
+      .file-date {
+        color: map-get($colors , cool-gray--400);
+        @include text-base---medium;
+        padding: 5px 20px;
+        @media screen and (max-width: 420px) {
+          display: none;
+        }
+      }
+      .container-icon-trash {
+        padding: 3px 6px;
+        border: solid 1px transparent;
+        border-radius: 4px;
+        &:hover {
+          border: solid 1px $myc-grey-light;
+          cursor: pointer;
+        }
+      }
+    }
+  }

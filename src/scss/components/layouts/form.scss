@@ -1,0 +1,319 @@
+/////////////////////////////////////
+///////////  Form layout  ///////////
+/////////////////////////////////////
+
+.container-form-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @media screen and (max-width: 650px) {
+    padding: 0 0px;
+  }
+}
+
+.informations-card {
+  height: 100%;
+}
+
+.form-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  @media screen and (max-width: 1030px) {
+    flex-direction: column;
+  }
+}
+
+.form-row-start {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  @media screen and (max-width: 1030px) {
+    flex-direction: column;
+  }
+}
+
+.form-col {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: calc(50% - 28px);
+  @media screen and (max-width: 1030px) {
+    width: 100%;
+  }
+}
+
+@for $i from 1 through 100 {
+  .form-col-#{$i} {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    @if $i == 100 {
+      width: 100%;
+    } @else {
+      width: #{$i}+ "%";
+      margin-right: 16px;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+    @media screen and (max-width: 1030px) {
+      width: 100%;
+    }
+  }
+}
+
+.col-column {
+  flex-direction: column;
+}
+
+.form-input-container {
+  width: 100%;
+  margin-bottom: 12px;
+  .myc-input-label {
+    @include text-sm---regular;
+    color: map-get($colors, cool-gray--700);
+    display: block;
+    margin-bottom: 8px;
+    height: 20px;
+  }
+  .myc-input-label-light {
+    @include text-sm---regular;
+    color: map-get($colors, cool-gray--400);
+    display: block;
+    margin-bottom: 8px;
+    height: 20px;
+    text-transform: Uppercase;
+  }
+  &:nth-child(2) {
+    margin-left: 16px;
+  }
+  .v-input--radio-group__input {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.myc-radio-label {
+  /* coolGray/700 */
+  padding: 16px;
+}
+
+.v-label {
+  @include text-base---regular;
+}
+
+.v-radio {
+  margin: 0 !important;
+  width: 48%;
+}
+
+.v-messages {
+  display: none;
+}
+
+.radioChecked {
+  background-color: map-get($colors, blue--50);
+  border: 1px solid map-get($colors, blue--500);
+  border-radius: 4px;
+}
+
+.myc-input-label {
+  @include text-sm---regular;
+  display: block;
+  color: map-get($colors, cool-gray--700);
+  height: 20px;
+}
+
+.myc-input-label-light {
+  @include text-sm---regular;
+  color: map-get($colors, cool-gray--400);
+  display: block;
+  margin-bottom: 8px;
+  height: 20px;
+  text-transform: Uppercase;
+}
+
+.myc-label-light-uppercase {
+  @include text-sm---medium;
+  display: block;
+  color: map-get($colors, cool-gray--400);
+  margin-bottom: 8px;
+  text-transform: Uppercase;
+}
+
+.container-page-form {
+  position: relative;
+  width: 100%;
+  background-color: $myc-backgroud-forms;
+  display: flex;
+  justify-content: center;
+  height: auto !important;
+  align-items: flex-start;
+
+  .theme--light {
+    background-color: transparent;
+  }
+
+  .container-form {
+    margin-top: 40px;
+    width: 700px;
+    @media screen and (max-width: 770px) {
+      width: 100%;
+    }
+    h2 {
+      font-size: 30px;
+      font-weight: 600;
+      @media screen and (max-width: 770px) {
+        padding-left: 1vw;
+        font-size: 20px;
+      }
+    }
+
+    .container-position {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: row;
+      margin: 16px 0 25px;
+      @media screen and (max-width: 770px) {
+        padding-left: 1vw;
+        margin: 5px 0 10px;
+      }
+
+      .icon-position {
+        margin-left: -8px;
+      }
+
+      .position-text {
+        font-size: 18px;
+        color: #3e3bcc;
+        margin: 0 0 0 10px;
+        @media screen and (max-width: 770px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.container-row-input {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  @media screen and (max-width: 770px) {
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.container-row-submit {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.container-row-checkbox {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 25px;
+}
+
+.container-row-textarea {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-row-double-textarea {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 33px;
+  @media screen and (max-width: 770px) {
+    height: auto;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0px !important;
+  }
+}
+
+.container-row-condition {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-row-calendar {
+  width: 100%;
+}
+
+.container-row-signature,
+.container-row-dropzone {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.form-title {
+  margin: 10px 0 10px 0;
+  @media screen and (max-width: 770px) {
+    padding-left: 1vw;
+    margin: 20px 0 10px;
+  }
+}
+
+.patient-title {
+  font-size: 35px;
+  margin: 20px 0;
+}
+
+.family-members-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  align-items: center;
+  .infos {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    p {
+      margin-bottom: 0;
+    }
+    .primaryInfo {
+      @include text-sm---regular;
+      color: map-get($colors, cool-gray--700);
+      line-height: 20px;
+    }
+    .secondaryInfo {
+      @include text-xs---regular;
+      color: map-get($colors, cool-gray--500);
+      line-height: 16px;
+    }
+  }
+  .deleteMember {
+    font-size: 28px;
+    margin-right: 10px;
+  }
+
+  .deleteMember:hover {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,32 @@
+/////////////////////////////////////
+///////// Navigation Page ///////////
+/////////////////////////////////////
+
+.navigation-page{
+    background-color: map-get($colors, white);
+    padding: 16px;
+    box-shadow: $shadow-base;
+    border-radius: 4px;
+    ul{
+        list-style: none;
+        padding: 0;
+        li{
+            @include text-base---medium;
+            color: map-get($colors, cool-gray--700);
+            margin-bottom: 8px;
+            padding: 8px 16px;
+            background-color: map-get($colors , white);
+            border-radius: 4px;
+            &:last-child{
+                margin-bottom: 0px;
+            }
+            &:hover{
+                cursor: pointer;
+                background-color: map-get($colors , cool-gray--50);
+            }
+        }   
+        .active{
+            background-color: map-get($colors , cool-gray--100);
+        }
+    }
+}

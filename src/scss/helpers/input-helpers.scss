@@ -1,0 +1,195 @@
+/////////////////////////////////////
+//////////  Helpers form  ///////////
+/////////////////////////////////////
+
+// Mixins
+@use "./../mixins/form.scss";
+
+.formulate-input {
+  margin-bottom: 0px !important;
+}
+
+.v-text-field.v-text-field--enclosed:not(.v-text-field--rounded) > .v-input__control > .v-input__slot,
+.v-text-field.v-text-field--enclosed .v-text-field__details {
+  padding: 0 8px;
+}
+
+.v-text-field > .v-input__control > .v-input__slot {
+  min-height: 36px !important;
+  .v-text-field__slot {
+    @include text-sm---regular;
+    color: map-get($colors, cool-gray--700) !important;
+    &::placeholder {
+      color: map-get($colors, cool-gray--400) !important;
+    }
+    input {
+      @include text-sm---regular;
+      color: map-get($colors, cool-gray--700) !important;
+      &::placeholder {
+        @include text-sm---regular;
+        color: map-get($colors, cool-gray--400) !important;
+      }
+    }
+  }
+  .v-input__prepend-inner {
+    margin-top: 6px !important;
+    padding-right: 8px !important;
+    i {
+      color: map-get($colors, cool-gray--400) !important;
+    }
+  }
+  .v-input__append-inner {
+    margin-top: 6px !important;
+    i {
+      color: map-get($colors, cool-gray--400) !important;
+    }
+  }
+}
+.v-autocomplete:not(.v-input--is-disabled).v-select.v-text-field input::placeholder {
+  @include text-sm---regular;
+  color: map-get($colors, cool-gray--400) !important;
+}
+
+.v-select-list .v-list-item__title {
+  @include text-sm---regular;
+  color: map-get($colors, cool-gray--700) !important;
+}
+
+// Error
+.formulate-input-errors {
+  list-style: none;
+  padding: 0 !important;
+  .formulate-input-error {
+    font-size: 11px;
+    color: $myc-error;
+  }
+}
+.error--text {
+  .v-input__slot {
+    fieldset {
+      border: solid 1px map-get($colors, rose--600) !important;
+    }
+    &:hover {
+      fieldset {
+        outline: map-get($colors, rose--200) solid 2px !important;
+        padding-top: 0;
+        top: 0px;
+        legend {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Focus
+.v-input--is-focused {
+  .v-input__slot {
+    fieldset {
+      border: solid 1px map-get($colors, indigo--600) !important;
+    }
+    &:hover {
+      fieldset {
+        outline: map-get($colors, indigo--100) solid 2px !important;
+        padding-top: 0;
+        top: 0px;
+        legend {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Remove background on auto complete
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+.formulate-input-help {
+  font-size: 11px;
+  color: grey;
+}
+
+.v-input {
+  font-size: 14px !important;
+}
+
+.required {
+  .formulate-input-wrapper {
+    .formulate-input-label {
+      width: auto !important;
+      display: initial;
+      position: relative;
+      &::before {
+        content: "*";
+        position: absolute;
+        color: red;
+        font-size: 14px;
+        right: -10px;
+      }
+    }
+
+    .formulate-input-element {
+      margin-top: 8px !important;
+    }
+  }
+}
+
+.required-label {
+  @include text-base---medium;
+  color: map-get($colors, rose--400);
+}
+
+.vue-tel-input-vuetify {
+  .v-text-field__details {
+    display: none;
+  }
+
+  .v-text-field {
+    .v-input__control {
+      .v-input__slot {
+        fieldset {
+          border: 1px solid map-get($colors, cool-gray--200);
+          border-left: 1px solid white;
+          border-radius: 0px 4px 4px 0px !important;
+        }
+      }
+    }
+  }
+  .country-code {
+    .v-text-field {
+      .v-input__control {
+        .v-input__slot {
+          fieldset {
+            border: 1px solid map-get($colors, cool-gray--200);
+            border-right: 1px solid white;
+            border-radius: 4px 0px 0px 4px !important;
+          }
+        }
+      }
+    }
+  }
+}
+.v-input--is-readonly {
+  cursor: unset !important;
+  pointer-events: none !important;
+  border: none !important;
+  input {
+    cursor: unset !important;
+    pointer-events: none !important;
+  }
+  .v-autocomplete.v-input > .v-input__control > .v-input__slot {
+    cursor: unset !important;
+  }
+  .v-input__append-inner {
+    display: none;
+  }
+  // fieldset {
+  //   border: none !important;
+  //   box-shadow: none !important;
+  // }
+}

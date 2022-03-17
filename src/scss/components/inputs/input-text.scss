@@ -1,0 +1,80 @@
+/////////////////////////////////////
+///////////  Inputs text  ///////////
+/////////////////////////////////////
+
+// Mixins
+@import '../../mixins/form.scss';
+
+.input-text, .input-email{
+	position: relative !important;
+	width: $input-width-desktop;
+	@media screen and (max-width: 770px) {
+		height: auto;
+		width: $input-width-mobile;
+	}
+	div.formulate-input-help{
+		//position: absolute !important;
+		right: 0 !important;
+		//text-align: right;
+		top: 3px;
+	}
+	div{
+		width: 100%;
+
+		label.formulate-input-label{
+			font-size: 14px;
+			font-weight: 400;
+			margin-bottom: 10px;
+		}
+
+		div{
+			width: 100%;
+			max-width: 100% !important;
+
+			input[type="text"], input[type="email"], input[type="number"]{
+				width: 100%;
+				padding: 14px 12px;
+				@include input-style();
+			}
+		}
+	}
+
+	// Error
+	ul{
+		li.formulate-input-error{
+			font-size: 11px;
+		}
+	}
+}
+
+div.input-search{
+	width: 542px;
+	display: flex;
+	@media screen and (max-width: 750px) {
+		width: 100%;
+	}
+	input[type="text"].search{
+		padding: 8px 12px;
+		width: 500px;
+		@media screen and (max-width: 750px) {
+			width: calc(100% - 42px);
+		}
+		background-color: white;
+		border: 1px solid $myc-input-border;
+		&:focus{
+			border: 1px solid $myc-input-focus !important;
+		}
+	}
+	.icon{
+		width: 42px;
+		height: 42px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: white;
+		border-top: 1px solid $myc-input-border;
+		border-right: 1px solid $myc-input-border;
+		border-bottom: 1px solid $myc-input-border;
+		cursor: pointer;
+	}
+}

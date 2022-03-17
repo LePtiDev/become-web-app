@@ -1,0 +1,78 @@
+/////////////////////////////////////
+/////////  Inputs textarea  /////////
+/////////////////////////////////////
+
+// Mixins
+@import "../../mixins/form.scss";
+
+.v-textarea .v-input__control {
+  textarea {
+    margin: 0 !important;
+    padding: 10px 8px 8px 8px !important;
+    @include text-sm---regular;
+    color: map-get($colors, cool-gray-700);
+    &::placeholder {
+      @include text-sm---regular;
+      color: map-get($colors, cool-gray-400);
+    }
+  }
+}
+
+.input-textarea {
+  width: 100%;
+  max-width: 100% !important;
+  div {
+    width: 100% !important;
+    max-width: 100% !important;
+    label.formulate-input-label {
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    div.formulate-input-element {
+      width: 100% !important;
+      max-width: 100% !important;
+      textarea {
+        width: 100% !important;
+        height: 50px !important;
+        resize: none;
+        background-color: white;
+      }
+    }
+  }
+}
+
+.input-textarea-half {
+  width: $input-width-desktop;
+  position: relative;
+
+  @media screen and (max-width: 770px) {
+    width: $input-width-mobile;
+    margin-top: 33px;
+  }
+
+  display: flex;
+  div.formulate-input-help {
+    position: absolute;
+    right: 0;
+  }
+  div.formulate-input-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    label.formulate-input-label {
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    div.formulate-input-element {
+      width: 100% !important;
+      max-width: 100% !important;
+      textarea {
+        width: 100% !important;
+        height: 25px !important;
+        resize: none;
+        background-color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+/////////////////////////////////////
+///////////  Input Litle ////////////
+/////////////////////////////////////
+
+.myc-little-input{
+    position: relative;
+    input{
+        @include text-sm---regular;
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 0;
+        padding: 0px 0px 1px 0px;
+        min-width: 20px;
+        -moz-appearance: textfield;
+        &:focus{
+            outline: none;
+        }
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+    }
+    span{
+        display: block;
+        min-width: 20px !important;
+        min-height: 20px !important;
+        @include text-sm---regular;
+        color: transparent;
+        margin: 0;
+        padding: 0px 0px 1px 0px;
+    }
+}
+
+.complete{
+    color: map-get($colors , blue--500) !important;
+    border-bottom: solid 1px map-get($colors, blue--500) !important;
+}
+
+.empty{
+    color: map-get($colors , cool-gray--400) !important;
+    border-bottom: solid 1px map-get($colors, cool-gray--400) !important;
+}

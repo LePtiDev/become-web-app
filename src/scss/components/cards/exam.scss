@@ -1,0 +1,81 @@
+/////////////////////////////////////
+////////////  Card Exam  ////////////
+/////////////////////////////////////
+
+
+.card-exam {
+    background: transparent!important;
+    .exam-date-row {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      &:nth-child(2) {
+        margin: 5px 0;
+      }
+      h4 {
+        font-weight: 400;
+        margin-right: 15px;
+      }
+      .exam-date {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2px 10px;
+        border: 1px solid $myc-light-grey;
+        border-radius: 2px;
+        p {
+          margin: 0 15px 0 0;
+        }
+      }
+    }
+    .spacer {
+      height: 1px;
+      display: block;
+      margin: 20px 0;
+      background-color: #e0e0e0;
+    }
+    .investigation,
+    .conclusion {
+      width: 100%;
+      padding: 5px;
+      @media screen and (max-width: 700px) {
+        padding: 0;
+      }
+      h4 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+    }
+    .footer-button {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      @media screen and (max-width: 600px) {
+        flex-direction: column-reverse;
+      }
+    }
+    .myc-exam-text-area {
+      margin: 0 !important;
+      .v-input__control .v-input__slot {
+        &::before,
+        &::after {
+          display: none !important;
+        }
+        .v-text-field__slot {
+          &::before,
+          &::after {
+            display: none !important;
+          }
+          textarea {
+            border-bottom: 3px solid #e3f3ff;
+            &::before,
+            &::after {
+              display: none !important;
+            }
+          }
+        }
+      }
+    }
+  }

@@ -1,0 +1,28 @@
+.myc-medevent-history-list-item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  i{
+      color: map-get($colors, cool-gray--300) !important;
+      cursor: pointer;
+  }
+  .container-left{
+      .doctor-name{
+          margin-left: 4px;
+          @include text-sm---regular;
+          color: map-get($colors, gray--700);
+      }
+      .date{
+          margin-left: 4px;
+          @include text-xxs---regular;
+          color: map-get($colors, cool-gray--400);
+      }
+  }
+  .container-right{
+      button{
+          margin-left: 4px;
+          color: map-get($colors, blue--500) !important;
+      }
+  }
+}

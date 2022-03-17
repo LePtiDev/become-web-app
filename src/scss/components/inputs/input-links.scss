@@ -1,0 +1,37 @@
+/////////////////////////////////////
+//////////  Inputs Links  ///////////
+/////////////////////////////////////
+
+// Mixins
+@import '../../mixins/form.scss';
+
+
+.v-application a.form-link-condition{
+	font-size: 13px;
+	text-decoration: none;
+	margin-bottom: 2px;
+	color: black !important;
+	@media screen and (max-width: 428px) {
+		font-size: 10px;
+	}
+}
+
+.v-application a.form-link-condition-second{
+	font-size: 13px;
+	text-decoration: none;
+	margin-bottom: 2px;
+	color: #9D9D9D !important;
+	@media screen and (max-width: 428px) {
+		font-size: 10px;
+	}
+}
+
+.v-application a.form-link-important{
+	font-size: 16px;
+	text-decoration: none;
+	margin-bottom: 2px;
+	color: #1c0ed4 !important;
+	@media screen and (max-width: 428px) {
+		font-size: 10px;
+	}
+}

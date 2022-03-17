@@ -1,0 +1,50 @@
+/////////////////////////////////////
+//////////  Toggle button ///////////
+/////////////////////////////////////
+
+.toggle-button-group{
+    .v-btn--active,
+    .v-item--active {
+        background-color: transparent !important;
+        &::before {
+        display: none;
+        }
+        &::after {
+        display: none;
+        }
+    }
+    .toggle-button {
+    border: 1px solid white;
+    background-color: transparent !important;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    .v-btn__content {
+        span {
+        color: $myc-grey;
+        font-family: Source Sans Pro;
+        text-transform: lowercase;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 24px;
+        &:first-letter {
+            text-transform: uppercase;
+        }
+        }
+    }
+    &:hover {
+        border: 1px solid $myc-blue;
+        transition: none;
+        background-color: transparent !important;
+        opacity: 1 !important;
+        &::before {
+        display: none;
+        }
+        .v-btn__content {
+        span {
+            color: $myc-blue;
+        }
+        }
+    }
+    }
+}

@@ -1,0 +1,83 @@
+/////////////////////////////////////
+///////..  Cookie Dialog  ///////////
+/////////////////////////////////////
+
+.Cookie {
+  position: fixed;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 9999;
+  width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-direction: column;
+  box-shadow: $shadow-2xl;
+  border-radius: 4px;
+  background-color: map-get($colors, white);
+  padding: 16px;
+  @include breakpoint(sm){
+    width: auto;
+  }
+}
+
+.cookie-container-button{
+  display: flex;
+  margin-top: 16px;
+}
+
+.cookie-container-text{
+  color: map-get($colors, cool-gray--400);
+  @include text-base---regular;
+  a{
+    color: map-get($colors, cool-gray--400);
+    @include text-base---regular;
+  }
+}
+
+.Cookie--bottom {
+  bottom: 15px;
+  left: 15px;
+  right: 0;
+  @include breakpoint(sm){
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+.slideFromTop-enter,
+.slideFromTop-leave-to {
+  transform: translate(0px, -12.5em);
+}
+
+.slideFromTop-enter-to,
+.slideFromTop-leave {
+  transform: translate(0px, 0px);
+}
+
+.slideFromBottom-enter,
+.slideFromBottom-leave-to {
+  transform: translate(0px, 12.5em);
+}
+
+.slideFromBottom-enter-to,
+.slideFromBottom-leave {
+  transform: translate(0px, 0px);
+}
+
+.slideFromBottom-enter-active,
+.slideFromBottom-leave-active,
+.slideFromTop-enter-active,
+.slideFromTop-leave-active {
+  transition: transform 0.4s ease-in;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}

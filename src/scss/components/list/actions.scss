@@ -1,0 +1,38 @@
+.myc-container-item-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.myc-list-item-icon {
+  height: 112px;
+  width: calc(50% - 4px);
+  border: map-get($colors, cool-gray--200) dashed 1px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .v-icon {
+    color: map-get($colors, cool-gray--700);
+    margin-bottom: 8px;
+  }
+  span {
+    display: block;
+    @include text-base---regular;
+    text-align: center;
+    color: map-get($colors, cool-gray--700);
+  }
+  &:hover {
+    background-color: map-get($colors, blue--50);
+    border: map-get($colors, blue--50) solid 1px;
+    .v-icon {
+      color: map-get($colors, blue--500);
+    }
+    span {
+      color: map-get($colors, blue--500);
+    }
+  }
+}

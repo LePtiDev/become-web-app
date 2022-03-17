@@ -1,0 +1,42 @@
+/////////////////////////////////////
+/////////  Inputs Checkbox  /////////
+/////////////////////////////////////
+
+// Mixins
+@import '../../mixins/form.scss';
+
+
+.input-checkbox{
+	margin: 0 10px 0 0;
+	color: black;
+	.formulate-input-wrapper{
+		.formulate-input-element--checkbox{
+			margin: 0 !important;
+		}
+	}
+
+	.formulate-input[data-classification=box] .formulate-input-element-decorator{
+		border: solid 1px map-get($colors, cool-gray--600) !important;
+	}
+	// Error
+	ul{
+		li.formulate-input-error{
+			font-size: 11px;
+			position: absolute;
+		}
+	}
+}
+
+.container-row-condition{
+	background-color: map-get($colors, white);
+	border-radius: 4px;
+	.input-checkbox{
+		margin: 0 10px 0 0;
+		color: black;
+		.formulate-input-wrapper{
+			.formulate-input-element--checkbox{
+				margin: 0 !important;
+			}
+		}
+	}
+}

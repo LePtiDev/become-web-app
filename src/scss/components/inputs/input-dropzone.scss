@@ -1,0 +1,44 @@
+/////////////////////////////////////
+////////  Inputs Dropzone  //////////
+/////////////////////////////////////
+
+// Mixins
+@import '../../mixins/form.scss';
+
+#dropzone, .dropzone{
+	margin-bottom: 20px;
+	height: 72px !important;
+	min-height: 72px !important;
+	width: 100% !important;
+	background-color: map-get($colors, cool-gray--50);
+	border: 1px dashed map-get($colors, cool-gray--200);
+	margin-top: 5px;
+	margin: 0;
+	border-radius: 4px;
+	padding: 0px !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	.dz-preview {
+		object-fit: contain;
+		height: 72px !important;
+		width: 100% !important;
+		background-size: contain;
+		border-radius: 5px;
+		margin: 0;
+		padding: 0;
+	}
+	.dz-default{
+		margin: 0px;
+		span{
+			color: map-get($colors , cool-gray--600);
+			@include text-base---regular;
+			padding: 0 20%;
+			display: block;
+		}
+	}
+	&:hover{
+		border: 1px dotted $myc-input-focus;
+	}
+	
+}

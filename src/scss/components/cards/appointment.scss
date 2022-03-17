@@ -1,0 +1,31 @@
+/////////////////////////////////////
+////////  Card appointement  ////////
+/////////////////////////////////////
+
+.container-notifaction-appointment{
+  border: solid 1px map-get($colors, cool-gray--200);
+  background-color: map-get($colors, white);
+  box-shadow: $shadow-base;
+  border-radius: 8px;
+  padding: 16px 19px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p{
+      margin: 0;
+      padding: 0;
+      .text{
+          @include text-base---regular;
+      }
+      .date{
+          @include text-base---medium;
+      }
+  }
+  .comment-appointement{
+      background-color: map-get($colors, cool-gray--100);
+      @include text-sm---regular;
+      padding: 8px;
+      border-radius: 4px;
+  }
+}

@@ -1,0 +1,26 @@
+/////////////////////////////////////
+////////  Inputs Signature  /////////
+/////////////////////////////////////
+
+// Mixins
+@import '../../mixins/form.scss';
+
+.signature{
+	width: 90vw !important;
+	div{
+		// Label
+		label.formulate-input-label{
+			font-size: 14px;
+			font-weight: 400;
+			margin-bottom: 10px;
+		}
+
+		div{
+			div:first-child{
+				background-color: white;
+				border: 1px solid rgb(235, 233, 233) !important;
+				margin-bottom: 10px;
+			}
+		}
+	}
+}

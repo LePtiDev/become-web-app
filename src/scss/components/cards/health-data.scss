@@ -1,0 +1,78 @@
+/////////////////////////////////////
+////////  Card health data  /////////
+/////////////////////////////////////
+
+.container-content-card{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .informations{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .health-data-field{
+            display: flex;
+            align-items: center;
+            .health-data-label{
+                font-style: normal;
+                font-weight: 600;
+                font-size: 16px;
+                line-height: 24px;
+                margin-left: 20px;
+
+            }
+            .input-health-data{
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 24px;
+                border-radius: 2px;
+                margin-left: 10px;
+            }
+        }
+    }
+}
+
+.container-allergy {
+    width: 100%;
+    border: 1px solid $myc-light-grey;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    border-radius: 5px;
+    margin: 10px 0 0 0;
+    .allergy-title {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: row;
+      align-items: center;
+      .icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $myc-blue-light;
+        padding: 5px;
+        border-radius: 50px;
+        margin-right: 10px;
+      }
+      h4 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 24px;
+      }
+    }
+    .title-allergy-card {
+      padding-left: 45px;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+    .text-allergy-card {
+      white-space: pre-line;
+      padding-left: 45px;
+    }
+    span {
+      padding-left: 55px;
+      display: block;
+    }
+  }
