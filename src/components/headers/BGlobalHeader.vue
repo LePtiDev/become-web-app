@@ -1,6 +1,6 @@
 <template>
   <div class="myc-global-header">
-    <MycButton
+    <b-button
       v-if="backTitle"
       @click="returnTo()"
       type="terciary"
@@ -10,7 +10,7 @@
     <h2 v-if="title">{{ title }}</h2>
     <div v-if="primaryButton" class="container-buttons">
       <slot name="info"></slot>
-      <MycButton
+      <b-button
         v-if="secondaryButton"
         type="secondary"
         :iconsLeft="secondaryIcon ? 'mdi-' + secondaryIcon : ''"
@@ -20,7 +20,7 @@
       <v-menu v-if="ButtonOptions" content-class="header-tool-menu" offset-y>
         <template v-slot:activator="{ on, attrs }">
           <div v-bind="attrs" v-on="on">
-            <MycButton
+            <b-button
               :iconsLeft="'mdi-' + primaryIcon"
               :title="primaryButton"
             />
@@ -38,7 +38,7 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <MycButton
+      <b-button
         v-else
         @click="primaryClick"
         :iconsLeft="'mdi-' + primaryIcon"
@@ -52,8 +52,13 @@
 
 <script lang="ts">
 import Vue from "vue";
+import BButton from "../BButton.vue";
+
 export default Vue.extend({
-  name: "myc-global-header",
+  name: "b-global-header",
+  components: {
+    BButton,
+  },
   props: {
     center: {
       type: Boolean,

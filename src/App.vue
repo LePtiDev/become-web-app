@@ -1,5 +1,5 @@
 <template>
-  <div class="container-app">
+  <v-app class="container-app">
     <navbar v-if="this.$route.name != 'login'" />
     <div
       :class="
@@ -10,7 +10,7 @@
       <router-view />
     </div>
     <b-snackbar :settings="snackbar" />
-  </div>
+  </v-app>
 </template>
 <script lang="ts">
 import Vue from "vue";
