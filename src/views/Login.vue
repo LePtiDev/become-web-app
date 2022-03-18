@@ -63,12 +63,14 @@
 <script lang="ts">
 import Vue from "vue";
 import BButton from "@/components/BButton.vue";
+import BGlobalCard from "@/components/BGlobalCard.vue";
 import { mapActions, mapState } from "vuex";
 
 export default Vue.extend({
   name: "login",
   components: {
     BButton,
+    BGlobalCard
   },
   data() {
     return {
@@ -79,7 +81,6 @@ export default Vue.extend({
     };
   },
   created() {
-    this.user_data = {};
     this.$supabase.auth.signOut();
   },
   computed: {
@@ -95,12 +96,6 @@ export default Vue.extend({
         password: this.password,
       });
       if (user) {
-        console.log(user);
-        let get_data: any = await this.$supabase
-          .from("users")
-          .select()
-          .eq("auth_id", user.id);
-        this.setUser(get_data.data[0]);
         this.$router.push({ name: "dashboard" });
       } else {
         this.setSnackbarAction({

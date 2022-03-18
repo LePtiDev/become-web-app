@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 const state = {
   user_data: {}
 };

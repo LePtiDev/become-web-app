@@ -41,7 +41,7 @@ const router = new VueRouter({
   routes,
 });
 
-/* router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   if (to.matched.some((record) => {return record.meta.requiresAuth})) {
     let has_user: any = supabase.auth.user();
     if(has_user){
@@ -61,6 +61,6 @@ const router = new VueRouter({
   else {
     next()
   }
-}) */
+})
 
 export default router;

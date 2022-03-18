@@ -29,11 +29,11 @@
           <v-icon>mdi-chart-box-outline</v-icon>
           <span class="link-name">Dashboard</span>
         </div>
-        <!-- <div class="container-second-link">
+        <div class="container-second-link">
           <div class="nav-second-link">
             <span class="link-name">Profile</span>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="container-bottom-nav">
@@ -86,7 +86,6 @@ export default Vue.extend({
     ...mapState("user", ["user_data"]),
   },
   methods: {
-    ...mapActions("user", ["setUser"]),
     setWindowHeight() {
       this.windowHeight = "height: " + window.innerHeight + "px";
     },
