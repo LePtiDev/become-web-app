@@ -29,6 +29,17 @@
           <v-icon>mdi-chart-box-outline</v-icon>
           <span class="link-name">Dashboard</span>
         </div>
+          <div
+          :class="
+            $route.meta.type == 'classes'
+              ? 'link-active nav-link'
+              : 'nav-link'
+          "
+          @click="goTo('classes')"
+        >
+          <v-icon>mdi-chart-box-outline</v-icon>
+          <span class="link-name">Cours</span>
+        </div>
         <!-- <div class="container-second-link">
           <div class="nav-second-link">
             <span class="link-name">Profile</span>

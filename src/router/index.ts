@@ -18,6 +18,15 @@ const routes = [
     },
   },
   {
+    path: "/classes",
+    name: "classes",
+    component: () => import("@/views/Classes.vue"),
+    meta: {
+      type: "classes",
+      requiresAuth: true,
+    },
+  },
+  {
     path: "/users",
     name: "users",
     component: () => import("@/views/Users.vue"),

@@ -24,7 +24,9 @@
     }
   }
 }
-
+.maxWidth{
+  max-width: 250px;
+}
 .myc-card-global {
   background-color: map-get($colors, white);
   padding: 12px;
