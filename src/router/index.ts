@@ -9,6 +9,14 @@ Vue.use(VueRouter);
 
 const routes = [
   {
+    path: "/",
+    name: "home",
+    component: () => import("@/views/Home.vue"),
+    meta: {
+      type: "Home",
+    },
+  },
+  {
     path: "/dashboard",
     name: "dashboard",
     component: () => import("@/views/Dashboard.vue"),
@@ -33,6 +41,14 @@ const routes = [
     meta: {
       type: "login",
     },
+  },
+  {
+    path: "/signup",
+    name: "signup",
+    component: () => import("@/views/Signup.vue"),
+    meta: {
+      type: "signup"
+    }
   }
 ];
 

@@ -1,10 +1,8 @@
 <template>
   <v-app class="container-app">
-    <navbar v-if="this.$route.name != 'login'" />
+    <navbar v-if="checkRouteForNavBar" />
     <div
-      :class="
-        this.$route.name == 'login' ? 'container-page-login' : 'container-page'
-      "
+      :class="checkRouteForContainer"
       class=""
     >
       <router-view />
@@ -25,6 +23,17 @@ export default Vue.extend({
   },
   computed: {
     ...mapState("snackbar", ["snackbar"]),
+    checkRouteForNavBar(): boolean {
+      const routes: Array<string> = ['home', 'login', 'signup']
+      const currentRoute: any = this.$route.name
+      const check: Array<boolean> = routes.map(route => route === currentRoute)
+      let value: boolean = true
+      if (check) value = false
+      return value
+    },
+    checkRouteForContainer(): string {
+      return this.$route.name != '' ? 'container-page-login' : 'container-page'
+    }
   },
   created() {
     if (!this.$supabase.auth) {
