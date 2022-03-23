@@ -6,18 +6,14 @@
   >
     <div class="container-top-nav">
       <div class="container-nav-logo">
-        <img class="become-logo" alt="Myc" src="@/assets/logo.png" />
+        <img
+          @click="goTo('home')"
+          class="become-logo"
+          alt="Myc"
+          src="@/assets/logo.png"
+        />
       </div>
       <div class="container-all-link">
-        <div
-          :class="
-            $route.meta.type == 'user' ? 'link-active nav-link' : 'nav-link'
-          "
-          @click="goTo('users')"
-        >
-          <v-icon>mdi-account-multiple-outline</v-icon>
-          <span class="link-name">Utilisateurs</span>
-        </div>
         <div
           :class="
             $route.meta.type == 'dashboard'
@@ -29,10 +25,25 @@
           <v-icon>mdi-chart-box-outline</v-icon>
           <span class="link-name">Dashboard</span>
         </div>
-        <div class="container-second-link">
-          <div class="nav-second-link">
-            <span class="link-name">Profile</span>
-          </div>
+        <div
+          v-if="user_data.role === 'SUPER_ADMIN' || user_data.role === 'ADMIN'"
+          :class="
+            $route.meta.type == 'user' ? 'link-active nav-link' : 'nav-link'
+          "
+          @click="goTo('users')"
+        >
+          <v-icon>mdi-account-multiple-outline</v-icon>
+          <span class="link-name">Utilisateurs</span>
+        </div>
+        <div
+          v-if="user_data.role === 'SUPER_ADMIN' || user_data.role === 'ADMIN'"
+          :class="
+            $route.meta.type == 'course' ? 'link-active nav-link' : 'nav-link'
+          "
+          @click="goTo('courses')"
+        >
+          <v-icon>mdi-book-open-outline</v-icon>
+          <span class="link-name">Cours</span>
         </div>
       </div>
     </div>
@@ -45,22 +56,6 @@
           {{ user_data ? user_data.last_name : "" }}
         </span>
       </div>
-      <!--       <v-menu
-        content-class="tool-menu"
-        v-model="showSubMenu"
-        :close-on-content-click="true"
-        :nudge-width="200"
-        offset-x
-      >
-        <template v-slot:activator="{ on }"> </template>
-        <v-list>
-          <v-list-item>
-            <v-list-item-title @click="logout()"
-              >Deconnection</v-list-item-title
-            >
-          </v-list-item>
-        </v-list>
-      </v-menu> -->
     </div>
   </nav>
 </template>

@@ -1,12 +1,7 @@
 <template>
   <v-app class="container-app">
-    <navbar v-if="this.$route.name != 'login'" />
-    <div
-      :class="
-        this.$route.name == 'login' ? 'container-page-login' : 'container-page'
-      "
-      class=""
-    >
+    <navbar v-if="$route.meta.showSideBar" />
+    <div :class="getPageClass()">
       <router-view />
     </div>
     <b-snackbar :settings="snackbar" />
@@ -35,6 +30,17 @@ export default Vue.extend({
     return {
       message: "hello toi",
     };
+  },
+  methods: {
+    getPageClass() {
+      if (this.$route.name == "home") {
+        return "container-home-page";
+      } else if (this.$route.meta?.showSideBar) {
+        return "container-page";
+      } else {
+        return "container-page-login";
+      }
+    },
   },
 });
 </script>

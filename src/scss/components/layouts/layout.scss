@@ -28,6 +28,16 @@
   }
 }
 
+.container-home-page {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  .container-content {
+    width: 100%;
+  }
+}
+
 .page {
   width: 100%;
   height: auto;
@@ -47,6 +57,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+.sign-up-card {
+  width: 800px !important;
+  .container-sign-up-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 }
 
