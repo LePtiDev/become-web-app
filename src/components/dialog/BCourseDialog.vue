@@ -1,5 +1,12 @@
 <template>
-  <b-global-dialog :title="courseId ? 'Modifier le cours' : 'Créer un cour'" @close="close" :primaryButton="courseId ? 'Modifier' : 'Ajouter'" @primary-click="submit()">
+  <b-global-dialog
+    :title="courseId ? 'Modifier le cours' : 'Créer un cour'"
+    @close="close"
+    :primaryButton="courseId ? 'Modifier' : 'Ajouter'"
+    secondaryButton="Annuler"
+    @secondary-click="close"
+    @primary-click="submit()"
+  >
     <form>
       <div class="form-row">
         <div class="form-col-50">
@@ -50,10 +57,16 @@
         </div>
       </div>
       <div class="form-row">
-        <div class="form-col-100">
+        <div class="form-col-50">
           <div class="form-input-container">
             <span class="myc-input-label">Lien vidéo</span>
             <v-text-field dense color="primary" name="video_link" type="text" placeholder="https://mon-lien.com" v-model="course.video_link" outlined></v-text-field>
+          </div>
+        </div>
+        <div class="form-col-50">
+          <div class="form-input-container">
+            <span class="myc-input-label">Niveau <span class="required-label">*</span></span>
+            <v-text-field dense color="primary" name="level" type="text" placeholder="1" v-model="course.level" outlined></v-text-field>
           </div>
         </div>
       </div>

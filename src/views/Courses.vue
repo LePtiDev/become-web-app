@@ -1,6 +1,6 @@
 <template>
   <div class="has-header page">
-    <BGlobalHeader title="Cours" primaryButton="Ajouter un cours" @button-primary-click="courseDialog = true" />
+    <BGlobalHeader title="Cours" :primaryButton="user_data.role == 'SUPER_ADMIN' || user_data.role == 'ADMIN' ? 'Ajouter un cours' : ''" @button-primary-click="courseDialog = true" />
     <b-global-card title="Cours d'aujourd'hui">
       <!--       <template v-slot:headerButton>
         <v-text-field class="search" prepend-inner-icon="mdi-magnify" hide-details placeholder="Chercher" v-model="search" type="text" dense outlined required></v-text-field>
@@ -79,6 +79,13 @@
         <template v-slot:[`item.end_at`]="{ item }">
           <span>{{ getHour(item.end_at) }}</span>
         </template>
+        <template v-slot:[`item.video_link`]="{ item }">
+          <b-button v-if="item.video_link" @click="openClick(item.video_link)" small title="rejoindre" />
+          <b-button v-else type="disable" small title="Pas de lien" />
+        </template>
+        <template v-slot:[`item.id`]="{ item }">
+          <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
+        </template>
       </v-data-table>
     </b-global-card>
     <b-global-card title="Cours de la semaine">
@@ -113,6 +120,13 @@
         </template>
         <template v-slot:[`item.end_at`]="{ item }">
           <span>{{ getHour(item.end_at) }}</span>
+        </template>
+        <template v-slot:[`item.video_link`]="{ item }">
+          <b-button v-if="item.video_link" @click="openClick(item.video_link)" small title="rejoindre" />
+          <b-button v-else type="disable" small title="Pas de lien" />
+        </template>
+        <template v-slot:[`item.id`]="{ item }">
+          <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
         </template>
       </v-data-table>
     </b-global-card>
@@ -195,7 +209,7 @@ export default Vue.extend({
       }
     },
     async getNextDayCourses() {
-      const start: any = Math.floor(new Date(new Date().setHours(24, 0, 0, 0)).getTime() / 1000);
+      const start: any = Math.floor(new Date(new Date().setHours(24, 0, 1, 0)).getTime() / 1000);
       const end: any = Math.floor(new Date(new Date().setHours(48, 0, 0, 0)).getTime() / 1000);
 
       const { data, error } = await this.$supabase.from("courses").select("*, module(*)").gte("start_at", start).lte("start_at", end);

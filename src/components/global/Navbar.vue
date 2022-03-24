@@ -1,47 +1,19 @@
 <template>
-  <nav
-    class="container-navbar"
-    :class="showNav ? 'nav-show-mobile' : ''"
-    :style="windowHeight"
-  >
+  <nav class="container-navbar" :class="showNav ? 'nav-show-mobile' : ''" :style="windowHeight">
     <div class="container-top-nav">
       <div class="container-nav-logo">
-        <img
-          @click="goTo('home')"
-          class="become-logo"
-          alt="Myc"
-          src="@/assets/logo.png"
-        />
+        <div class="logo-become" @click="goTo('home')"></div>
       </div>
       <div class="container-all-link">
-        <div
-          :class="
-            $route.meta.type == 'dashboard'
-              ? 'link-active nav-link'
-              : 'nav-link'
-          "
-          @click="goTo('dashboard')"
-        >
+        <div :class="$route.meta.type == 'dashboard' ? 'link-active nav-link' : 'nav-link'" @click="goTo('dashboard')">
           <v-icon>mdi-chart-box-outline</v-icon>
           <span class="link-name">Dashboard</span>
         </div>
-        <div
-          v-if="user_data.role === 'SUPER_ADMIN' || user_data.role === 'ADMIN'"
-          :class="
-            $route.meta.type == 'user' ? 'link-active nav-link' : 'nav-link'
-          "
-          @click="goTo('users')"
-        >
+        <div v-if="user_data.role === 'SUPER_ADMIN' || user_data.role === 'ADMIN'" :class="$route.meta.type == 'user' ? 'link-active nav-link' : 'nav-link'" @click="goTo('users')">
           <v-icon>mdi-account-multiple-outline</v-icon>
           <span class="link-name">Utilisateurs</span>
         </div>
-        <div
-          v-if="user_data.role === 'SUPER_ADMIN' || user_data.role === 'ADMIN'"
-          :class="
-            $route.meta.type == 'course' ? 'link-active nav-link' : 'nav-link'
-          "
-          @click="goTo('courses')"
-        >
+        <div :class="$route.meta.type == 'course' ? 'link-active nav-link' : 'nav-link'" @click="goTo('courses')">
           <v-icon>mdi-book-open-outline</v-icon>
           <span class="link-name">Cours</span>
         </div>

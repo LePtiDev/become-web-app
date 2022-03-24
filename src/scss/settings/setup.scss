@@ -13,13 +13,13 @@ $font: ""; // default: Inter
 $font-type: ""; // default: rem
 
 //================================================================ App
-$app-background: map-get($colors, blue--100);
+$app-background: map-get($colors, white);
+$menu-background: map-get($colors, cool-gray--900);
+$page-login-background: map-get($colors, cool-gray--900);
+$header-background: map-get($colors, white);
 
 //================================================================ Sidebar
 $sidebar-width: 200px;
-
-//================================================================ Form
-$myc-backgroud-forms: map-get($colors, blue--100);
 
 //================================================================ Layout
 $layout-gap: 12px;
@@ -30,8 +30,8 @@ $layout-breakpoint-lg: 1904px;
 $layout-breakpoint-xl: 1905px;
 
 //================================================================ Button
-$primary-button-color: map-get($colors, $primary-color + "--500");
-$primary-button-hover-color: map-get($colors, $primary-color + "--400");
+$primary-button-color: map-get($colors, $primary-color + "--800");
+$primary-button-hover-color: map-get($colors, $primary-color + "--700");
 $primary-button-border-color: transparent;
 $primary-button-text-color: map-get($colors, white);
 $primary-button-icon-color: map-get($colors, white);
@@ -53,8 +53,6 @@ $disable-button-hover-color: map-get($colors, $terciary-color + "--100");
 $disable-button-border-color: transparent;
 $disable-button-text-color: map-get($colors, $terciary-color + "--400");
 $disable-button-icon-color: map-get($colors, $terciary-color + "--400");
-
-$app-background: map-get($colors, blue--100);
 
 $error-button-color: map-get($colors, $error-color + "--500");
 $error-button-hover-color: map-get($colors, $error-color + "--400");
