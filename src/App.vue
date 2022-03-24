@@ -9,9 +9,9 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import BSnackbar from "@/components/BSnackbar.vue";
+import BSnackbar from "@/components/global/BSnackbar.vue";
 import { mapState } from "vuex";
-import Navbar from "./components/Navbar.vue";
+import Navbar from "./components/global/Navbar.vue";
 
 export default Vue.extend({
   components: {

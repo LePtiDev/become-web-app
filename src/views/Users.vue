@@ -2,19 +2,9 @@
   <div class="has-header page">
     <b-global-header title="Utilisateurs" />
     <b-global-card title="Utilisateurs">
-      <template v-slot:headerButton>
-        <v-text-field
-          class="search"
-          prepend-inner-icon="mdi-magnify"
-          hide-details
-          placeholder="Chercher"
-          v-model="search"
-          type="text"
-          dense
-          outlined
-          required
-        ></v-text-field>
-      </template>
+      <!--       <template v-slot:headerButton>
+        <v-text-field class="search" prepend-inner-icon="mdi-magnify" hide-details placeholder="Chercher" v-model="search" type="text" dense outlined required></v-text-field>
+      </template> -->
       <v-data-table
         :loading="loading"
         class="table-normal myc-pagination btn-datatable"
@@ -38,9 +28,7 @@
           {{ getFullDate(item.updated_at) }}
         </template>
         <template v-slot:[`item.auth_id`]="{ item }">
-          <v-btn color="primary" icon @click="deleteUser(item)">
-            <v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn
-          >
+          <v-btn color="primary" icon @click="deleteUser(item)"> <v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn>
         </template>
       </v-data-table>
     </b-global-card>
@@ -52,9 +40,9 @@ import Vue from "vue";
 import * as _ from "lodash";
 
 // Components
-import BGlobalCard from "../components/BGlobalCard.vue";
-import BGlobalHeader from "../components/headers/BGlobalHeader.vue";
-import BGlobalDialog from "../components/dialog/BGlobalDialog.vue";
+import BGlobalCard from "../components/global/BGlobalCard.vue";
+import BGlobalHeader from "../components/global/headers/BGlobalHeader.vue";
+import BGlobalDialog from "../components/global/dialog/BGlobalDialog.vue";
 
 // Helpers
 import { getFullDate } from "../helpers/dateHelper";
@@ -152,14 +140,9 @@ export default Vue.extend({
           message: "L'utilisateur est super administrateur",
         });
       } else {
-        const { data: user, error } = await this.$supabase.auth.api.deleteUser(
-          userData.auth_id
-        );
+        const { data: user, error } = await this.$supabase.auth.api.deleteUser(userData.auth_id);
         if (user) {
-          const { data, error } = await this.$supabase
-            .from("users")
-            .delete()
-            .match({ auth_id: userData.auth_id });
+          const { data, error } = await this.$supabase.from("users").delete().match({ auth_id: userData.auth_id });
           console.log(data, error);
         }
       }

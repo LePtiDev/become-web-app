@@ -7,28 +7,15 @@
       <div class="form-row">
         <div class="form-col-100">
           <div class="form-input-container">
-            <span class="myc-input-label"
-              >Login <span class="required-label">*</span></span
-            >
-            <v-text-field
-              dense
-              color="primary"
-              name="user"
-              type="email"
-              placeholder="email"
-              v-model="email"
-              prepend-inner-icon="mdi-account"
-              outlined
-            ></v-text-field>
+            <span class="myc-input-label">Login <span class="required-label">*</span></span>
+            <v-text-field dense color="primary" name="user" type="email" placeholder="email" v-model="email" prepend-inner-icon="mdi-account" outlined></v-text-field>
           </div>
         </div>
       </div>
       <div class="form-row mb-4">
         <div class="form-col-100">
           <div class="form-input-container">
-            <span class="myc-input-label"
-              >Mot de passe <span class="required-label">*</span></span
-            >
+            <span class="myc-input-label">Mot de passe <span class="required-label">*</span></span>
             <v-text-field
               color="primary"
               id="password"
@@ -62,15 +49,15 @@
 
 <script lang="ts">
 import Vue from "vue";
-import BButton from "@/components/BButton.vue";
-import BGlobalCard from "@/components/BGlobalCard.vue";
+import BButton from "@/components/global/BButton.vue";
+import BGlobalCard from "@/components/global/BGlobalCard.vue";
 import { mapActions, mapState } from "vuex";
 
 export default Vue.extend({
   name: "login",
   components: {
     BButton,
-    BGlobalCard
+    BGlobalCard,
   },
   data() {
     return {

@@ -7,59 +7,27 @@
       <div class="form-row">
         <div class="form-col-50">
           <div class="form-input-container">
-            <span class="myc-input-label"
-              >Prénom <span class="required-label">*</span></span
-            >
-            <v-text-field
-              dense
-              color="primary"
-              name="user"
-              type="text"
-              placeholder="Marie"
-              v-model="first_name"
-              outlined
-            ></v-text-field>
+            <span class="myc-input-label">Prénom <span class="required-label">*</span></span>
+            <v-text-field dense color="primary" name="user" type="text" placeholder="Marie" v-model="first_name" outlined></v-text-field>
           </div>
         </div>
         <div class="form-col-50">
           <div class="form-input-container">
-            <span class="myc-input-label"
-              >Nom <span class="required-label">*</span></span
-            >
-            <v-text-field
-              dense
-              color="primary"
-              name="user"
-              type="text"
-              placeholder="Dupont"
-              v-model="last_name"
-              outlined
-            ></v-text-field>
+            <span class="myc-input-label">Nom <span class="required-label">*</span></span>
+            <v-text-field dense color="primary" name="user" type="text" placeholder="Dupont" v-model="last_name" outlined></v-text-field>
           </div>
         </div>
       </div>
       <div class="form-row">
         <div class="form-col-50">
           <div class="form-input-container">
-            <span class="myc-input-label"
-              >Email <span class="required-label">*</span></span
-            >
-            <v-text-field
-              dense
-              color="primary"
-              name="user"
-              type="email"
-              placeholder="email"
-              v-model="email"
-              outlined
-            ></v-text-field>
+            <span class="myc-input-label">Email <span class="required-label">*</span></span>
+            <v-text-field dense color="primary" name="user" type="email" placeholder="email" v-model="email" outlined></v-text-field>
           </div>
         </div>
         <div class="form-col-50">
           <div class="form-input-container">
-            <span class="myc-input-label"
-              >Mot de passe <span class="required-label">*</span></span
-            >
+            <span class="myc-input-label">Mot de passe <span class="required-label">*</span></span>
             <v-text-field
               color="primary"
               id="password"
@@ -92,8 +60,8 @@
 
 <script lang="ts">
 import Vue from "vue";
-import BButton from "@/components/BButton.vue";
-import BGlobalCard from "@/components/BGlobalCard.vue";
+import BButton from "@/components/global/BButton.vue";
+import BGlobalCard from "@/components/global/BGlobalCard.vue";
 import { mapActions, mapState } from "vuex";
 
 export default Vue.extend({

@@ -25,21 +25,8 @@
         <v-form ref="form" v-model="valid">
           <div class="form-row mt-4">
             <div class="form-input-container">
-              <span class="myc-input-label"
-                >{{ $t(`global.reason`)
-                }}<span class="required-label">*</span></span
-              >
-              <v-select
-                dense
-                outlined
-                width="auto"
-                :items="reasonsList"
-                v-model="reasonDeletion"
-                append-icon="mdi-unfold-more-horizontal"
-                required
-                :rules="basicRule"
-                class="mt-2"
-              ></v-select>
+              <span class="myc-input-label">{{ $t(`global.reason`) }}<span class="required-label">*</span></span>
+              <v-select dense outlined width="auto" :items="reasonsList" v-model="reasonDeletion" append-icon="mdi-unfold-more-horizontal" required :rules="basicRule" class="mt-2"></v-select>
             </div>
           </div>
         </v-form>

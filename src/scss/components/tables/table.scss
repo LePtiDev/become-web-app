@@ -68,7 +68,6 @@
             color: map-get($colors, cool-gray--700) !important;
             height: 40px !important;
             padding: 0 8px !important;
-            text-transform: capitalize;
             &:last-child {
               padding: 0 16px 0 8px !important;
               text-align: center !important;
@@ -86,58 +85,6 @@
   div.v-data-footer {
     background-color: transparent !important;
     border: none !important;
-    flex-wrap: wrap !important;
-    justify-content: flex-end;
-    @media screen and (max-width: 700px) {
-      .v-data-footer__select {
-        display: none !important;
-      }
-    }
-  }
-}
-
-.table-normal-no-action {
-  margin-top: 37px;
-  border-radius: 0px !important;
-  div.v-data-table__wrapper {
-    background-color: white !important;
-    table {
-      thead {
-        background-color: white;
-        tr > th {
-          border-top: 1px solid $myc-input-border;
-        }
-        tr > th:first-child {
-          border-left: 1px solid $myc-input-border;
-        }
-        tr > th:last-child {
-          border-right: 1px solid $myc-input-border;
-        }
-      }
-      tbody {
-        tr.v-data-table__empty-wrapper {
-          td {
-            border-left: none !important;
-          }
-        }
-        tr {
-          td {
-            border-bottom: 1px solid $myc-input-border;
-          }
-          td:first-child {
-            border-left: 1px solid $myc-input-border;
-          }
-          td:last-child {
-            border-right: 1px solid $myc-input-border;
-          }
-        }
-      }
-    }
-  }
-  div.v-data-footer {
-    background-color: $myc-backgroud-forms;
-    border-top: none !important;
-    border-left: none !important;
     flex-wrap: wrap !important;
     justify-content: flex-end;
     @media screen and (max-width: 700px) {
