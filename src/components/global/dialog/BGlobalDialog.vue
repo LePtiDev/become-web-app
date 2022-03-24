@@ -2,65 +2,28 @@
   <div class="myc-dialog-global-container">
     <div @click="backgroundClick" class="dialog-global-background"></div>
     <div class="dialog-global" :style="width ? 'width: ' + width + 'px' : ''">
-      <div
-        v-if="hasHeader"
-        ref="dialogHeader"
-        class="dialog-header"
-        :class="scrollHeaderClass"
-      >
+      <div v-if="hasHeader" ref="dialogHeader" class="dialog-header" :class="scrollHeaderClass">
         <div class="title-close">
           <div class="dialog-title">{{ title ? title : "" }}</div>
           <v-icon v-if="cross" @click="close" class="pointer">mdi-close</v-icon>
         </div>
         <p v-if="subTitle">{{ subTitle }}</p>
       </div>
-      <div
-        ref="dialogContent"
-        :class="background ? 'background-content-dialog' : ''"
-        class="dialog-content"
-        :style="'max-height: ' + getMaxHeight() + 'px'"
-      >
+      <div ref="dialogContent" :class="background ? 'background-content-dialog' : ''" class="dialog-content" :style="'max-height: ' + getMaxHeight() + 'px'">
         <slot />
       </div>
-      <div
-        v-if="primaryButton || secondaryButton"
-        ref="dialogFooter"
-        :class="scrollFooterClass"
-        class="dialog-footer"
-      >
-        <div
-          class="container-footer"
-          :class="{ centerButton: hasCenterButton }"
-        >
-          <div class="dialog-error">
+      <div v-if="primaryButton || secondaryButton" ref="dialogFooter" :class="scrollFooterClass" class="dialog-footer">
+        <div class="container-footer" :class="{ centerButton: hasCenterButton }">
+          <div v-if="!hasCenterButton" class="dialog-error">
             <div v-if="errors.length > 0" class="dialog-message-error">
               <v-icon>mdi-alert-circle-outline</v-icon>
               <p>
-                {{
-                  $t("global.the_field") +
-                  " " +
-                  $t("global." + errors[0].name) +
-                  " " +
-                  errors[0].error
-                }}
+                {{ $t("global.the_field") + " " + $t("global." + errors[0].name) + " " + errors[0].error }}
               </p>
             </div>
           </div>
-          <b-button
-            v-if="secondaryButton"
-            :type="secondaryButtonType"
-            :title="secondaryButton"
-            class="ml-4"
-            @click="secondaryClick"
-          ></b-button>
-          <b-button
-            v-if="primaryButton"
-            :title="primaryButton"
-            :type="primaryButtonType"
-            class="ml-4"
-            @click="primaryClick"
-            :finished="finished"
-          ></b-button>
+          <b-button v-if="secondaryButton" :type="secondaryButtonType" :title="secondaryButton" class="ml-4" @click="secondaryClick"></b-button>
+          <b-button v-if="primaryButton" :title="primaryButton" :type="primaryButtonType" class="ml-4" @click="primaryClick" :finished="finished"></b-button>
         </div>
       </div>
       <div v-else class="dialog-no-footer"></div>
@@ -145,10 +108,8 @@ export default Vue.extend({
       let header: any = this.$refs?.["dialogHeader"];
       // window height - headerheight - margin - footer
       let totalWindow = this.windowHeight - 32;
-      if (footer?.offsetHeight != undefined)
-        totalWindow = totalWindow - footer?.offsetHeight;
-      if (header?.offsetHeight != undefined)
-        totalWindow = totalWindow - header?.offsetHeight;
+      if (footer?.offsetHeight != undefined) totalWindow = totalWindow - footer?.offsetHeight;
+      if (header?.offsetHeight != undefined) totalWindow = totalWindow - header?.offsetHeight;
       return totalWindow;
     },
     getFooterShadow(maxHeight: number, bodyHeight: number) {

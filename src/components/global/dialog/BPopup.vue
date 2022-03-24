@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MycGlobalDialog
+    <BGlobalDialog
       :background="false"
       :cross="false"
       :hasHeader="false"
@@ -13,7 +13,7 @@
       v-if="isReady"
     >
       <div class="dialog-popup">
-        <MycIcon :iconType="iconType" :name="iconName" />
+        <v-icon>mdi-alert</v-icon>
         <div class="dialog-popup-title">
           {{ title }}
         </div>
@@ -21,27 +21,17 @@
           <slot name="text"></slot>
         </div>
       </div>
-      <div v-if="deletionPopUp" class="dialog-popup">
-        <v-form ref="form" v-model="valid">
-          <div class="form-row mt-4">
-            <div class="form-input-container">
-              <span class="myc-input-label">{{ $t(`global.reason`) }}<span class="required-label">*</span></span>
-              <v-select dense outlined width="auto" :items="reasonsList" v-model="reasonDeletion" append-icon="mdi-unfold-more-horizontal" required :rules="basicRule" class="mt-2"></v-select>
-            </div>
-          </div>
-        </v-form>
-      </div>
-    </MycGlobalDialog>
+    </BGlobalDialog>
   </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
-import MycGlobalDialog from "@/components/global/dialog/MycGlobalDialog.vue";
+import BGlobalDialog from "@/components/global/dialog/BGlobalDialog.vue";
 
 export default Vue.extend({
   name: "MycPopUp",
   components: {
-    MycGlobalDialog,
+    BGlobalDialog,
   },
   data() {
     return {
@@ -75,19 +65,19 @@ export default Vue.extend({
     iconName: String,
     primaryButton: {
       type: String,
-      default: i18n.t(`global.yes`),
+      default: "Oui",
     },
     secondaryButton: {
       type: String,
-      default: i18n.t("global.no"),
+      default: "Non",
     },
   },
   methods: {
     primaryClicked() {
-      this.$emit("primaryClicked", this.reasonDeletion);
+      this.$emit("primary-click");
     },
     secondaryClicked() {
-      this.$emit("secondaryClicked");
+      this.$emit("secondary-click");
     },
   },
   mounted() {

@@ -43,6 +43,7 @@
         </template>
         <template v-slot:[`item.id`]="{ item }">
           <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
+          <v-btn color="primary" icon @click="openDeleteCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn>
         </template>
       </v-data-table>
     </b-global-card>
@@ -85,6 +86,7 @@
         </template>
         <template v-slot:[`item.id`]="{ item }">
           <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
+          <v-btn color="primary" icon @click="openDeleteCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn>
         </template>
       </v-data-table>
     </b-global-card>
@@ -127,12 +129,18 @@
         </template>
         <template v-slot:[`item.id`]="{ item }">
           <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
+          <v-btn color="primary" icon @click="openDeleteCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn>
         </template>
       </v-data-table>
     </b-global-card>
 
     <!-- Dialog -->
     <b-course-dialog :courseId="courseId" v-if="courseDialog" @reload="closeCourseDialogue(true)" @close="closeCourseDialogue"></b-course-dialog>
+    <b-popup v-if="deleteCourseDialog" type="error" title="Attention" @primary-click="deleteCourse" @secondary-click="deleteCourseDialog = false">
+      <template v-slot:text>
+        <p>Voulez vous vraiment supprimer ce cours ?</p>
+      </template>
+    </b-popup>
   </div>
 </template>
 
@@ -147,13 +155,13 @@ import BGlobalHeader from "../components/global/headers/BGlobalHeader.vue";
 import { getModuleType } from "../helpers/courseHelper";
 import { getDate, getHour } from "../helpers/dateHelper";
 import BButton from "../components/global/BButton.vue";
-import { mapState } from "vuex";
-import BGlobalDialog from "../components/global/dialog/BGlobalDialog.vue";
+import { mapState, mapActions } from "vuex";
 import BCourseDialog from "../components/dialog/BCourseDialog.vue";
+import BPopup from "../components/global/dialog/BPopup.vue";
 
 export default Vue.extend({
   name: "courses",
-  components: { BGlobalHeader, BButton, BGlobalDialog, BCourseDialog },
+  components: { BGlobalHeader, BButton, BCourseDialog, BPopup },
   data() {
     return {
       // Table
@@ -170,6 +178,8 @@ export default Vue.extend({
       // Dialog
       courseDialog: false,
       courseId: null,
+      deleteCourseDialog: false,
+      deletecourseId: null,
     };
   },
   mounted() {
@@ -181,6 +191,33 @@ export default Vue.extend({
     getDate,
     getModuleType,
     getHour,
+    ...mapActions("snackbar", ["setSnackbarAction"]),
+    openDeleteCourseDialog(id: any) {
+      this.deletecourseId = id;
+      this.deleteCourseDialog = true;
+    },
+    async deleteCourse() {
+      const { data, error } = await this.$supabase.from("courses").delete().match({ id: this.deletecourseId });
+      if (data) {
+        this.deleteCourseDialog = false;
+        this.getDayCourses();
+        this.getNextDayCourses();
+        this.getWeekCourses();
+        this.setSnackbarAction({
+          status: true,
+          type: "success",
+          title: "Supprimé",
+          message: "Votre cours à été supprimé",
+        });
+      } else {
+        this.setSnackbarAction({
+          status: true,
+          type: "error",
+          title: "Erreur",
+          message: error,
+        });
+      }
+    },
     openCourseDialog(id: any) {
       this.courseId = id;
       this.courseDialog = true;
