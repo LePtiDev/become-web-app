@@ -1,6 +1,11 @@
 <template>
   <div class="has-header page">
-    <BGlobalHeader title="Cours" :primaryButton="user_data.role == 'SUPER_ADMIN' || user_data.role == 'ADMIN' ? 'Ajouter un cours' : ''" @button-primary-click="courseDialog = true" />
+    <BGlobalHeader
+      title="Cours"
+      :primaryButton="user_data.role == 'SUPER_ADMIN' || user_data.role == 'ADMIN' ? 'Ajouter' : ''"
+      @select-click="openDialogByValue($event)"
+      :ButtonOptions="ButtonOptions"
+    />
     <b-global-card title="Cours d'aujourd'hui">
       <!--       <template v-slot:headerButton>
         <v-text-field class="search" prepend-inner-icon="mdi-magnify" hide-details placeholder="Chercher" v-model="search" type="text" dense outlined required></v-text-field>
@@ -136,6 +141,7 @@
 
     <!-- Dialog -->
     <b-course-dialog :courseId="courseId" v-if="courseDialog" @reload="closeCourseDialogue(true)" @close="closeCourseDialogue"></b-course-dialog>
+    <b-module-dialog v-if="moduleDialog" @reload="closeCourseDialogue(true)" @close="moduleDialog = false"></b-module-dialog>
     <b-popup v-if="deleteCourseDialog" type="error" title="Attention" @primary-click="deleteCourse" @secondary-click="deleteCourseDialog = false">
       <template v-slot:text>
         <p>Voulez vous vraiment supprimer ce cours ?</p>
@@ -157,11 +163,12 @@ import { getDate, getHour } from "../helpers/dateHelper";
 import BButton from "../components/global/BButton.vue";
 import { mapState, mapActions } from "vuex";
 import BCourseDialog from "../components/dialog/BCourseDialog.vue";
+import BModuleDialog from "../components/dialog/BModuleDialog.vue";
 import BPopup from "../components/global/dialog/BPopup.vue";
 
 export default Vue.extend({
   name: "courses",
-  components: { BGlobalHeader, BButton, BCourseDialog, BPopup },
+  components: { BGlobalHeader, BButton, BCourseDialog, BModuleDialog, BPopup },
   data() {
     return {
       // Table
@@ -174,12 +181,19 @@ export default Vue.extend({
       dayCourses: [],
       nextDayCourses: [],
       weekCourses: [],
+      ButtonOptions: [
+        { label: "Ajouter un module", value: "module", icon: "book-education-outline" },
+        { label: "Ajouter un cours", value: "course", icon: "book-open-outline" },
+      ],
 
       // Dialog
       courseDialog: false,
       courseId: null,
+      // ---
       deleteCourseDialog: false,
       deletecourseId: null,
+      // ---
+      moduleDialog: false,
     };
   },
   mounted() {
@@ -192,6 +206,13 @@ export default Vue.extend({
     getModuleType,
     getHour,
     ...mapActions("snackbar", ["setSnackbarAction"]),
+    openDialogByValue(value: any) {
+      if (value == "course") {
+        this.courseDialog = true;
+      } else if (value == "module") {
+        this.moduleDialog = true;
+      }
+    },
     openDeleteCourseDialog(id: any) {
       this.deletecourseId = id;
       this.deleteCourseDialog = true;

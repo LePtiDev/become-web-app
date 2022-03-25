@@ -1,50 +1,26 @@
 <template>
   <div class="myc-global-header">
-    <b-button
-      v-if="backTitle"
-      @click="returnTo()"
-      type="terciary"
-      iconsLeft="mdi-chevron-left"
-      :title="backTitle"
-    />
+    <b-button v-if="backTitle" @click="returnTo()" type="terciary" iconsLeft="mdi-chevron-left" :title="backTitle" />
     <h2 v-if="title">{{ title }}</h2>
     <div v-if="primaryButton" class="container-buttons">
       <slot name="info"></slot>
-      <b-button
-        v-if="secondaryButton"
-        type="secondary"
-        :iconsLeft="secondaryIcon ? 'mdi-' + secondaryIcon : ''"
-        @click="secondaryClick"
-        :title="secondaryButton"
-      />
+      <b-button v-if="secondaryButton" type="secondary" :iconsLeft="secondaryIcon ? 'mdi-' + secondaryIcon : ''" @click="secondaryClick" :title="secondaryButton" />
       <v-menu v-if="ButtonOptions" content-class="header-tool-menu" offset-y>
         <template v-slot:activator="{ on, attrs }">
           <div v-bind="attrs" v-on="on">
-            <b-button
-              :iconsLeft="'mdi-' + primaryIcon"
-              :title="primaryButton"
-            />
+            <b-button :iconsLeft="'mdi-' + primaryIcon" :title="primaryButton" />
           </div>
         </template>
         <v-list>
           <v-list-item v-for="(item, index) in ButtonOptions" :key="index">
-            <v-list-item-title
-              style="cursor: pointer"
-              @click="selectClick(item.value)"
-            >
+            <v-list-item-title style="cursor: pointer" @click="selectClick(item.value)">
               <v-icon v-if="item.icon != ''">mdi-{{ item.icon }}</v-icon>
               <span>{{ item.label }}</span>
             </v-list-item-title>
           </v-list-item>
         </v-list>
       </v-menu>
-      <b-button
-        v-else
-        @click="primaryClick"
-        :iconsLeft="'mdi-' + primaryIcon"
-        :title="primaryButton"
-        :type="disabled ? 'disable' : 'primary'"
-      />
+      <b-button v-else @click="primaryClick" :iconsLeft="'mdi-' + primaryIcon" :title="primaryButton" :type="disabled ? 'disable' : 'primary'" />
     </div>
     <div v-if="center" style="width: 100px"></div>
   </div>
