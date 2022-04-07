@@ -1,5 +1,19 @@
 <template>
-  <nav class="container-navbar" :class="showNav ? 'nav-show-mobile' : ''" :style="windowHeight">
+  <nav class="container-navbar">
+    <div class="container-links">
+      <div class="logo" @click="goTo('home')"></div>
+      <span class="link-name" v-if="user_data.role" @click="goTo('dashboard')">Dashboard</span>
+      <span class="link-name" v-if="user_data.role === 'SUPER_ADMIN' || user_data.role === 'ADMIN'" @click="goTo('users')">Utilisateurs</span>
+      <span class="link-name" @click="goTo('courses')">Cours</span>
+    </div>
+
+    <div class="container-button">
+      <b-button v-if="user_data.role" iconsLeft="mdi-account-circle-outline" :title="user_data.first_name + ' ' + user_data.last_name" @click="goTo('dashboard')" type="secondary" />
+      <b-button v-if="!user_data.role" title="S'inscrire" @click="goTo('sign-up')" />
+      <b-button v-if="!user_data.role" title="Se connecter" type="secondary" @click="goTo('sign-in')" />
+    </div>
+  </nav>
+  <!--   <nav class="container-navbar" :class="showNav ? 'nav-show-mobile' : ''" :style="windowHeight">
     <div class="container-top-nav">
       <div class="container-nav-logo">
         <div class="logo-become" @click="goTo('home')"></div>
@@ -9,7 +23,7 @@
           <v-icon>mdi-chart-box-outline</v-icon>
           <span class="link-name">Dashboard</span>
         </div>
-        <div v-if="user_data.role === 'SUPER_ADMIN' || user_data.role === 'ADMIN'" :class="$route.meta.type == 'user' ? 'link-active nav-link' : 'nav-link'" @click="goTo('users')">
+        <div  :class="$route.meta.type == 'user' ? 'link-active nav-link' : 'nav-link'" @click="goTo('users')">
           <v-icon>mdi-account-multiple-outline</v-icon>
           <span class="link-name">Utilisateurs</span>
         </div>
@@ -29,7 +43,7 @@
         </span>
       </div>
     </div>
-  </nav>
+  </nav> -->
 </template>
 
 <script lang="ts">

@@ -26,7 +26,7 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import BGlobalDialog from "@/components/global/dialog/BGlobalDialog.vue";
+import BGlobalDialog from "./BGlobalDialog.vue";
 
 export default Vue.extend({
   name: "MycPopUp",

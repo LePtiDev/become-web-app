@@ -14,12 +14,15 @@ $font-type: ""; // default: rem
 
 //================================================================ App
 $app-background: map-get($colors, cool-gray--100);
-$menu-background: map-get($colors, cool-gray--900);
 $page-login-background: map-get($colors, cool-gray--900);
 $header-background: map-get($colors, white);
 
 //================================================================ Sidebar
-$sidebar-width: 200px;
+$menu-height: 70px;
+$menu-background: map-get($colors, cool-gray--900);
+
+//================================================================ Header
+$header-height: 70px;
 
 //================================================================ Layout
 $layout-gap: 12px;

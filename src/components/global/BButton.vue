@@ -1,30 +1,12 @@
 <template>
-  <div
-    v-if="stopPropagation"
-    :class="
-      small ? 'button-' + type + '--small' : 'button-' + type + '--regular'
-    "
-    @click.stop="click"
-  >
-    <v-icon v-if="iconsLeft && !isLoading" class="icon-left">{{
-      iconsLeft
-    }}</v-icon>
+  <div v-if="stopPropagation" :class="small ? 'button-' + type + '--small' : 'button-' + type + '--regular'" @click.stop="click">
+    <v-icon v-if="iconsLeft && !isLoading" class="icon-left">{{ iconsLeft }}</v-icon>
     <span v-if="title && !isLoading">{{ title }}</span>
-    <v-icon v-if="iconsRight && !isLoading" class="icon-right">{{
-      iconsRight
-    }}</v-icon>
+    <v-icon v-if="iconsRight && !isLoading" class="icon-right">{{ iconsRight }}</v-icon>
     <v-icon v-if="icon && !isLoading" class="icon">{{ icon }}</v-icon>
   </div>
-  <div
-    v-else
-    :class="
-      small ? 'button-' + type + '--small' : 'button-' + type + '--regular'
-    "
-    @click="click"
-  >
-    <v-icon v-if="iconsLeft && !isLoading" class="icon-left">{{
-      iconsLeft
-    }}</v-icon>
+  <div v-else :class="small ? 'button-' + type + '--small' : 'button-' + type + '--regular'" @click="click">
+    <v-icon v-if="iconsLeft && !isLoading" class="icon-left">{{ iconsLeft }}</v-icon>
     <div v-if="isLoading" class="loading">
       <div></div>
     </div>

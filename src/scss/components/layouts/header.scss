@@ -5,12 +5,10 @@
 .myc-global-header {
   position: fixed;
   z-index: 900;
-  top: 0;
+  top: $menu-height;
   right: 0;
-  width: calc(100% - $sidebar-width);
-  background-color: $header-background;
-  height: 80px;
-  box-shadow: $shadow-base;
+  width: 100%;
+  height: $header-height;
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -1,14 +1,5 @@
 <template>
-  <div class="container-content">
-    <nav class="container-home-navbar">
-      <div class="logo"></div>
-      <b-button v-if="user_data.role" title="Mon tableau de bord" @click="goTo('dashboard')" type="secondary" />
-      <div v-else class="container-button">
-        <b-button title="S'inscrire" @click="goTo('sign-up')" />
-        <b-button title="Se connecter" type="secondary" @click="goTo('sign-in')" />
-      </div>
-    </nav>
-  </div>
+  <div class="container-content-home"></div>
 </template>
 
 <script lang="ts">

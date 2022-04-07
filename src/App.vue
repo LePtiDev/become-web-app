@@ -1,10 +1,12 @@
 <template>
-  <v-app class="container-app">
-    <navbar v-if="$route.meta.showSideBar" />
-    <div :class="getPageClass()">
-      <router-view />
+  <v-app>
+    <div class="container-app">
+      <navbar />
+      <div :class="getPageClass()">
+        <router-view />
+      </div>
+      <b-snackbar :settings="snackbar" />
     </div>
-    <b-snackbar :settings="snackbar" />
   </v-app>
 </template>
 <script lang="ts">
@@ -33,12 +35,10 @@ export default Vue.extend({
   },
   methods: {
     getPageClass() {
-      if (this.$route.name == "home") {
-        return "container-home-page";
-      } else if (this.$route.meta?.showSideBar) {
-        return "container-page";
+      if (this.$route.name == "sign-in" || this.$route.name == "sign-up") {
+        return "container-login";
       } else {
-        return "container-page-login";
+        return "container-page";
       }
     },
   },

@@ -16,6 +16,7 @@
   span {
     color: $primary-button-text-color;
     vertical-align: middle;
+    text-transform: capitalize;
   }
 }
 .button-primary--small {
@@ -26,6 +27,7 @@
   border: solid 1px $primary-button-border-color;
   span {
     color: $primary-button-text-color;
+    text-transform: capitalize;
   }
 }
 
@@ -38,6 +40,7 @@
   border: solid 1px $secondary-button-border-color;
   span {
     color: $secondary-button-text-color;
+    text-transform: capitalize;
   }
 }
 .button-secondary--small {
@@ -48,6 +51,7 @@
   border: solid 1px $secondary-button-border-color;
   span {
     color: $secondary-button-text-color;
+    text-transform: capitalize;
   }
 }
 
@@ -60,6 +64,7 @@
   border: solid 1px $tertiary-button-border-color;
   span {
     color: $tertiary-button-text-color;
+    text-transform: capitalize;
   }
 }
 .button-terciary--small {
@@ -70,6 +75,7 @@
   border: solid 1px $tertiary-button-border-color;
   span {
     color: $tertiary-button-text-color;
+    text-transform: capitalize;
   }
 }
 
@@ -83,6 +89,7 @@
   cursor: not-allowed;
   span {
     color: $disable-button-text-color;
+    text-transform: capitalize;
   }
 }
 .button-disable--small {
@@ -94,6 +101,7 @@
   cursor: not-allowed;
   span {
     color: $disable-button-text-color;
+    text-transform: capitalize;
   }
 }
 
@@ -106,6 +114,7 @@
   border: solid 1px $error-button-border-color;
   span {
     color: $error-button-text-color;
+    text-transform: capitalize;
   }
 }
 .button-error--small {
@@ -116,6 +125,7 @@
   border: solid 1px $error-button-border-color;
   span {
     color: $error-button-text-color;
+    text-transform: capitalize;
   }
 }
 
@@ -128,6 +138,7 @@
   border: solid 1px $warning-button-border-color;
   span {
     color: $warning-button-text-color;
+    text-transform: capitalize;
   }
 }
 .button-warning--small {
@@ -138,6 +149,7 @@
   border: solid 1px $warning-button-border-color;
   span {
     color: $warning-button-text-color;
+    text-transform: capitalize;
   }
 }
 //================================================================ Button Icon

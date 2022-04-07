@@ -162,8 +162,8 @@ import { getModuleType } from "../helpers/courseHelper";
 import { getDate, getHour } from "../helpers/dateHelper";
 import BButton from "../components/global/BButton.vue";
 import { mapState, mapActions } from "vuex";
-import BCourseDialog from "../components/dialog/BCourseDialog.vue";
-import BModuleDialog from "../components/dialog/BModuleDialog.vue";
+import BCourseDialog from "@/components/content-dialog/BCourseDialog.vue";
+import BModuleDialog from "@/components/content-dialog/BModuleDialog.vue";
 import BPopup from "../components/global/dialog/BPopup.vue";
 
 export default Vue.extend({
