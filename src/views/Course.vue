@@ -1,7 +1,26 @@
 <template>
-  <div class="page">
-    <BGlobalHeader backTitle="retour" center :title="module.name" />
-    <pre>{{ module }}</pre>
+  <div class="page page-course">
+    <BGlobalHeader backTitle="retour" @button-back-click="goBack()" center :title="module.name" />
+    <b-global-card>
+      <div class="container-header-course">
+        <img class="image" src="https://img-c.udemycdn.com/course/240x135/602310_ec9f.jpg" alt="" />
+        <div class="content">
+          <div class="presentation-ligne">
+            <p>Type:</p>
+            <span class="chip-amber">{{ module.type }}</span>
+          </div>
+          <div class="presentation-ligne">
+            <p>Durée:</p>
+            <span class="chip-secondary-blue">5 heurs</span>
+          </div>
+          <div class="presentation-column">
+            <p>Description:</p>
+            <p class="description">{{ module.description }}</p>
+          </div>
+        </div>
+      </div>
+    </b-global-card>
+
     <pre>{{ courses }}</pre>
   </div>
 </template>
@@ -12,17 +31,16 @@ import * as _ from "lodash";
 
 // Components
 import BGlobalHeader from "../components/global/headers/BGlobalHeader.vue";
+import BGlobalCard from "../components/global/BGlobalCard.vue";
 
 // Helpers
 import { getModuleType } from "../helpers/courseHelper";
 import { getDate, getHour } from "../helpers/dateHelper";
-import BButton from "../components/global/BButton.vue";
 import { mapState, mapActions } from "vuex";
-import BPopup from "../components/global/dialog/BPopup.vue";
 
 export default Vue.extend({
   name: "course",
-  components: { BGlobalHeader },
+  components: { BGlobalHeader, BGlobalCard },
   data() {
     return {
       // Data
@@ -41,7 +59,6 @@ export default Vue.extend({
 
     async getModule() {
       //const start: any = Math.floor(new Date(new Date().setHours(0, 0, 0, 0)).getTime() / 1000);
-
       // Get module by id
       try {
         await this.$supabase
@@ -67,6 +84,9 @@ export default Vue.extend({
       } catch (error) {
         console.log(error);
       }
+    },
+    goBack() {
+      this.$router.push({ name: "courses" });
     },
   },
   computed: {

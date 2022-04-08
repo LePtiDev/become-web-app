@@ -77,7 +77,7 @@ export default Vue.extend({
   },
   methods: {
     returnTo() {
-      this.$emit("back-click");
+      this.$emit("button-back-click");
     },
     primaryClick() {
       this.$emit("button-primary-click");

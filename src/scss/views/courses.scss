@@ -37,3 +37,45 @@
         @include course-card()
     }
 }
+
+.page-course{
+    width: 100%;
+    .container-header-course{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        .image{
+            height: 150px;
+            border-radius: 4px;
+        }
+        .content{
+            padding-left: 32px;
+            .presentation-ligne{
+                margin-bottom: 4px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                p{
+                    margin: 0;
+                    margin-right: 8px;
+                    @include text-base---regular;
+                }
+            }
+            .presentation-column{
+                margin-bottom: 4px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                p {
+                    margin: 0;
+                    margin-right: 8px;
+                    @include text-base---regular;
+                }
+                .description {
+                    color: map-get($colors, cool-gray--500);
+                    @include text-base---regular;
+                }
+            }
+        }
+    }
+}
