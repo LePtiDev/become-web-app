@@ -91,6 +91,8 @@ export default Vue.extend({
             this.show = true;
           }
         }
+      } else {
+        this.$emit("click");
       }
     },
   },

@@ -2,9 +2,6 @@
   <div class="has-header page">
     <b-global-header title="Utilisateurs" />
     <b-global-card title="Utilisateurs">
-      <!--       <template v-slot:headerButton>
-        <v-text-field class="search" prepend-inner-icon="mdi-magnify" hide-details placeholder="Chercher" v-model="search" type="text" dense outlined required></v-text-field>
-      </template> -->
       <v-data-table
         :loading="loading"
         class="table-normal myc-pagination btn-datatable"
@@ -143,7 +140,21 @@ export default Vue.extend({
         const { data: user, error } = await this.$supabase.auth.api.deleteUser(userData.auth_id);
         if (user) {
           const { data, error } = await this.$supabase.from("users").delete().match({ auth_id: userData.auth_id });
-          console.log(data, error);
+          if (data) {
+            this.setSnackbarAction({
+              status: true,
+              type: "success",
+              title: "Succès",
+              message: "Utilisateur supprimé",
+            });
+          } else {
+            this.setSnackbarAction({
+              status: true,
+              type: "error",
+              title: "Erreur",
+              message: "Une erreur est survenu",
+            });
+          }
         }
       }
     },

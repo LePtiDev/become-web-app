@@ -37,10 +37,22 @@ const routes = [
       showSideBar: true,
     },
   },
+
+  /* Courses */
   {
     path: "/courses",
     name: "courses",
     component: () => import("@/views/Courses.vue"),
+    meta: {
+      type: "course",
+      requiresAuth: true,
+      showSideBar: true,
+    },
+  },
+  {
+    path: "/course/:id",
+    name: "course",
+    component: () => import("@/views/Course.vue"),
     meta: {
       type: "course",
       requiresAuth: true,

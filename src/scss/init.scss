@@ -27,7 +27,6 @@
 // Components - Layout
 @import "./components/layouts/layout.scss";
 @import "./components/layouts/page-header.scss";
-@import "./components/layouts/header-patient.scss";
 @import "./components/layouts/form.scss";
 @import "./components/layouts/header.scss";
 
@@ -63,3 +62,4 @@
 @import "./components/cards/global.scss";
 
 // Views
+@import "./views/courses.scss";

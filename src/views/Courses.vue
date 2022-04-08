@@ -1,143 +1,30 @@
 <template>
-  <div class="has-header page">
+  <div class="page">
     <BGlobalHeader
       title="Cours"
       :primaryButton="user_data.role == 'SUPER_ADMIN' || user_data.role == 'ADMIN' ? 'Ajouter' : ''"
       @select-click="openDialogByValue($event)"
       :ButtonOptions="ButtonOptions"
     />
-    <b-global-card title="Cours d'aujourd'hui">
-      <!--       <template v-slot:headerButton>
-        <v-text-field class="search" prepend-inner-icon="mdi-magnify" hide-details placeholder="Chercher" v-model="search" type="text" dense outlined required></v-text-field>
-      </template> -->
-      <v-data-table
-        :loading="loading"
-        class="table-normal myc-pagination btn-datatable"
-        :headers="Headers"
-        :header-props="headerProps"
-        :items="dayCourses"
-        item-key="key"
-        mobile-breakpoint="0"
-        multi-sort
-        :footer-props="{
-          'items-per-page-options': [10, 30, 50, 100, 200],
-        }"
-        :items-per-page="10"
-      >
-        <template v-slot:[`item.module.type`]="{ item }">
-          <span :class="getModuleType(item.module.type)">{{ item.module.type }}</span>
-        </template>
-        <template v-slot:[`item.module.name`]="{ item }">
-          <span class="chip-blue">{{ item.module.name }}</span>
-        </template>
-        <template v-slot:[`item.level`]="{ item }">
-          <span class="chip-red">Niveau {{ item.level }}</span>
-        </template>
-        <template v-slot:[`item.date`]="{ item }">
-          <span>{{ getDate(item.start_at) }}</span>
-        </template>
-        <template v-slot:[`item.start_at`]="{ item }">
-          <span>{{ getHour(item.start_at) }}</span>
-        </template>
-        <template v-slot:[`item.end_at`]="{ item }">
-          <span>{{ getHour(item.end_at) }}</span>
-        </template>
-        <template v-slot:[`item.video_link`]="{ item }">
-          <b-button v-if="item.video_link" @click="openClick(item.video_link)" small title="rejoindre" />
-          <b-button v-else type="disable" small title="Pas de lien" />
-        </template>
-        <template v-slot:[`item.id`]="{ item }">
-          <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
-          <v-btn color="primary" icon @click="openDeleteCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn>
-        </template>
-      </v-data-table>
-    </b-global-card>
-    <b-global-card title="Cours de demain">
-      <v-data-table
-        :loading="loading"
-        class="table-normal myc-pagination btn-datatable"
-        :headers="Headers"
-        :header-props="headerProps"
-        :items="nextDayCourses"
-        item-key="key"
-        mobile-breakpoint="0"
-        multi-sort
-        :footer-props="{
-          'items-per-page-options': [10, 30, 50, 100, 200],
-        }"
-        :items-per-page="10"
-      >
-        <template v-slot:[`item.module.type`]="{ item }">
-          <span :class="getModuleType(item.module.type)">{{ item.module.type }}</span>
-        </template>
-        <template v-slot:[`item.module.name`]="{ item }">
-          <span class="chip-blue">{{ item.module.name }}</span>
-        </template>
-        <template v-slot:[`item.level`]="{ item }">
-          <span class="chip-red">Niveau {{ item.level }}</span>
-        </template>
-        <template v-slot:[`item.date`]="{ item }">
-          <span>{{ getDate(item.start_at) }}</span>
-        </template>
-        <template v-slot:[`item.start_at`]="{ item }">
-          <span>{{ getHour(item.start_at) }}</span>
-        </template>
-        <template v-slot:[`item.end_at`]="{ item }">
-          <span>{{ getHour(item.end_at) }}</span>
-        </template>
-        <template v-slot:[`item.video_link`]="{ item }">
-          <b-button v-if="item.video_link" @click="openClick(item.video_link)" small title="rejoindre" />
-          <b-button v-else type="disable" small title="Pas de lien" />
-        </template>
-        <template v-slot:[`item.id`]="{ item }">
-          <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
-          <v-btn color="primary" icon @click="openDeleteCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn>
-        </template>
-      </v-data-table>
-    </b-global-card>
-    <b-global-card title="Cours de la semaine">
-      <v-data-table
-        :loading="loading"
-        class="table-normal myc-pagination btn-datatable"
-        :headers="Headers"
-        :header-props="headerProps"
-        :items="weekCourses"
-        item-key="key"
-        mobile-breakpoint="0"
-        multi-sort
-        :footer-props="{
-          'items-per-page-options': [10, 30, 50, 100, 200],
-        }"
-        :items-per-page="10"
-      >
-        <template v-slot:[`item.module.type`]="{ item }">
-          <span :class="getModuleType(item.module.type)">{{ item.module.type }}</span>
-        </template>
-        <template v-slot:[`item.module.name`]="{ item }">
-          <span class="chip-blue">{{ item.module.name }}</span>
-        </template>
-        <template v-slot:[`item.level`]="{ item }">
-          <span class="chip-red">Niveau {{ item.level }}</span>
-        </template>
-        <template v-slot:[`item.date`]="{ item }">
-          <span>{{ getDate(item.start_at) }}</span>
-        </template>
-        <template v-slot:[`item.start_at`]="{ item }">
-          <span>{{ getHour(item.start_at) }}</span>
-        </template>
-        <template v-slot:[`item.end_at`]="{ item }">
-          <span>{{ getHour(item.end_at) }}</span>
-        </template>
-        <template v-slot:[`item.video_link`]="{ item }">
-          <b-button v-if="item.video_link" @click="openClick(item.video_link)" small title="rejoindre" />
-          <b-button v-else type="disable" small title="Pas de lien" />
-        </template>
-        <template v-slot:[`item.id`]="{ item }">
-          <v-btn color="primary" icon @click="openCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-pencil-outline</v-icon></v-btn>
-          <v-btn color="primary" icon @click="openDeleteCourseDialog(item.id)"><v-icon small color="#DADADA">mdi-delete-outline</v-icon></v-btn>
-        </template>
-      </v-data-table>
-    </b-global-card>
+    <v-data-iterator :items="modules">
+      <template v-slot:default="props">
+        <div class="container-course-card">
+          <b-global-card
+            :class="(index + 1) % 4 === 0 ? 'course-card-end' : 'course-card'"
+            :key="'module-id-' + module.id"
+            v-for="(module, index) in props.items"
+            :title="module.name"
+            @click="goToCourse(module.id)"
+          >
+            <template v-slot:headerButton>
+              <span class="chip-amber">{{ module.type }}</span>
+            </template>
+            <img src="https://img-c.udemycdn.com/course/240x135/602310_ec9f.jpg" alt="" />
+            <p>{{ module.description }}</p>
+          </b-global-card>
+        </div>
+      </template>
+    </v-data-iterator>
 
     <!-- Dialog -->
     <b-course-dialog :courseId="courseId" v-if="courseDialog" @reload="closeCourseDialogue(true)" @close="closeCourseDialogue"></b-course-dialog>
@@ -178,9 +65,7 @@ export default Vue.extend({
       },
 
       // Data
-      dayCourses: [],
-      nextDayCourses: [],
-      weekCourses: [],
+      modules: [],
       ButtonOptions: [
         { label: "Ajouter un module", value: "module", icon: "book-education-outline" },
         { label: "Ajouter un cours", value: "course", icon: "book-open-outline" },
@@ -197,15 +82,17 @@ export default Vue.extend({
     };
   },
   mounted() {
-    this.getDayCourses();
-    this.getNextDayCourses();
-    this.getWeekCourses();
+    this.getModules();
   },
   methods: {
     getDate,
     getModuleType,
     getHour,
     ...mapActions("snackbar", ["setSnackbarAction"]),
+
+    goToCourse(id: string) {
+      this.$router.push({ name: "course", params: { id: id } });
+    },
     openDialogByValue(value: any) {
       if (value == "course") {
         this.courseDialog = true;
@@ -221,9 +108,7 @@ export default Vue.extend({
       const { data, error } = await this.$supabase.from("courses").delete().match({ id: this.deletecourseId });
       if (data) {
         this.deleteCourseDialog = false;
-        this.getDayCourses();
-        this.getNextDayCourses();
-        this.getWeekCourses();
+        this.getModules();
         this.setSnackbarAction({
           status: true,
           type: "success",
@@ -247,47 +132,16 @@ export default Vue.extend({
       this.courseId = null;
       this.courseDialog = false;
       if (reload) {
-        this.getDayCourses();
-        this.getNextDayCourses();
-        this.getWeekCourses();
+        this.getModules();
       }
     },
     openClick(link: any) {
       window.open(link, "_blank");
     },
-    async getDayCourses() {
-      const start: any = Math.floor(new Date(new Date().setHours(0, 0, 0, 0)).getTime() / 1000);
-      const end: any = Math.floor(new Date(new Date().setHours(24, 0, 0, 0)).getTime() / 1000);
-
-      const { data, error } = await this.$supabase.from("courses").select("*, module(*)").gte("start_at", start).lte("start_at", end);
+    async getModules() {
+      const { data, error } = await this.$supabase.from("modules").select("*");
       if (data) {
-        this.dayCourses = data;
-      } else {
-        console.log(error);
-      }
-    },
-    async getNextDayCourses() {
-      const start: any = Math.floor(new Date(new Date().setHours(24, 0, 1, 0)).getTime() / 1000);
-      const end: any = Math.floor(new Date(new Date().setHours(48, 0, 0, 0)).getTime() / 1000);
-
-      const { data, error } = await this.$supabase.from("courses").select("*, module(*)").gte("start_at", start).lte("start_at", end);
-      if (data) {
-        this.nextDayCourses = data;
-      } else {
-        console.log(error);
-      }
-    },
-    async getWeekCourses() {
-      var curr = new Date(); // get current date
-      var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-      var last = first + 6; // last day is the first day + 6
-
-      const start: any = Math.floor(new Date(new Date(curr.setDate(first)).setHours(24, 0, 0, 0)).getTime() / 1000);
-      const end: any = Math.floor(new Date(new Date(curr.setDate(last)).setHours(48, 0, 0, 0)).getTime() / 1000);
-
-      const { data, error } = await this.$supabase.from("courses").select("*, module(*)").gte("start_at", start).lte("start_at", end);
-      if (data) {
-        this.weekCourses = data;
+        this.modules = data;
       } else {
         console.log(error);
       }
@@ -295,63 +149,6 @@ export default Vue.extend({
   },
   computed: {
     ...mapState("user", ["user_data"]),
-    Headers() {
-      let computedHeaders = [
-        {
-          text: "Type",
-          value: "module.type",
-          align: "start",
-        },
-        {
-          text: "Module",
-          value: "module.name",
-          align: "start",
-        },
-        {
-          text: "Intervenant",
-          value: "teacher",
-          align: "start",
-        },
-        {
-          text: "Niveau",
-          value: "level",
-          align: "start",
-        },
-        {
-          text: "Description",
-          value: "description",
-          align: "start",
-        },
-        {
-          text: "Date",
-          value: "date",
-          align: "start",
-        },
-        {
-          text: "Début",
-          value: "start_at",
-          align: "start",
-        },
-        {
-          text: "Termine",
-          value: "end_at",
-          align: "start",
-        },
-        {
-          text: "Lien",
-          value: "video_link",
-          align: "start",
-        },
-      ];
-      if (this.user_data.role == "SUPER_ADMIN" || this.user_data.role == "ADMIN") {
-        computedHeaders.push({
-          text: "Action",
-          value: "id",
-          align: "start",
-        });
-      }
-      return computedHeaders;
-    },
   },
 });
 </script>

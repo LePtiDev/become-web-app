@@ -1,0 +1,39 @@
+
+@mixin course-card() {
+    height: 300px;
+    cursor: pointer;
+    transition: 200ms;
+    &:hover{
+        transition: 200ms;
+        transform: scale(1.02);
+    }
+    img {
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    p {
+        margin: 0 !important;
+        @include text-base---regular;
+        color: map-get($colors, cool-gray--500);
+    }
+}
+
+.container-course-card{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    .course-card{
+        width: calc(25% - 12px) !important;
+        margin-right: 16px;
+        @include course-card()
+    }
+    .course-card-end{
+        width: calc(25% - 12px) !important;
+        margin-right: 0px;
+        @include course-card()
+    }
+}
