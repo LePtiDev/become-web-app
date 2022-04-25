@@ -1,27 +1,8 @@
-const state = {
-  snackbar: {
-    status: false,
-    type: "success",
-    title: null,
-    message: "This is the snackbar",
-  },
-};
+const state = {};
 
-const actions = {
-  setSnackbarAction({commit}: {commit: Function}, payload: any) {
-    commit("setSnackbar", payload);
-  },
-};
+const actions = {};
 
-const mutations = {
-  setSnackbar(state: any, payload: any) {
-    const snackBar: any = payload;
-    if (!snackBar?.timeout) {
-      snackBar.timeout = 3000;
-    }
-    state.snackbar = snackBar;
-  },
-};
+const mutations = {};
 
 export const snackbar = {
   namespaced: true,

@@ -1,21 +1,10 @@
 import axios from 'axios'
 
-const state = {
-  user_data: {}
-};
+const state = {};
 
-const actions = {
-  setUser({commit}: {commit: Function}, payload: any) {
-    commit("setUser", payload);
-  },
-};
+const actions = {};
 
-const mutations = {
-  setUser(state: any, payload: any) {
-    console.log("set")
-    state.user_data = payload;
-  },
-};
+const mutations = {};
 
 export const user = {
   namespaced: true,

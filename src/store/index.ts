@@ -2,8 +2,8 @@ import Vue from "vue";
 import Vuex from "vuex";
 
 // Modules
-import {snackbar} from "./modules/snackbar.module";
-import {user} from "./modules/user.module";
+import { snackbar } from "./modules/snackbar.module";
+import { user } from "./modules/user.module";
 
 Vue.use(Vuex);
 

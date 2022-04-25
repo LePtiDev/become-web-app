@@ -1,65 +1,10 @@
-/////////////////////////////////////
-///////////   Init File   ///////////
-/////////////////////////////////////
+/*
+    Type: Init
+    Created by: Quentin Guerrier
+    Updated by: Quentin Guerrier
+*/
 
-// Constante
-@import "./settings/colors.scss";
-@import "./settings/reset.scss";
-@import "./settings/font.scss";
-@import "./settings/setup.scss";
+// Plugins
+@import "plugins/tailwind.css"
 
-// Helpers
-@import "./helpers/responsive-helpers.scss";
-@import "./helpers/global-helpers.scss";
-@import "./helpers/text-helpers.scss";
-@import "./helpers/input-helpers.scss";
 
-// Vuetify
-@import "./vuetify/_variables.scss";
-@import "./vuetify/surcharge.scss";
-
-// Components - Action
-@import "./components/actions/button.scss";
-
-// Components - Dialog
-@import "./components/dialog/global.scss";
-
-// Components - Layout
-@import "./components/layouts/layout.scss";
-@import "./components/layouts/page-header.scss";
-@import "./components/layouts/form.scss";
-@import "./components/layouts/header.scss";
-
-// Components - Notification
-@import "./components/notifications/snackbar.scss";
-@import "./components/notifications/chip.scss";
-
-// Components - Tables
-@import "./components/tables/table.scss";
-
-// Components - Navigations
-@import "./components/navigations/menu.scss";
-
-// Components - Inputs
-@import "./components/inputs/input-select.scss";
-@import "./components/inputs/input-text.scss";
-@import "./components/inputs/input-date.scss";
-@import "./components/inputs/input-signature.scss";
-@import "./components/inputs/input-dropzone.scss";
-@import "./components/inputs/input-autocomplete.scss";
-@import "./components/inputs/input-textarea.scss";
-@import "./components/inputs/input-concentration.scss";
-@import "./components/inputs/input-phone.scss";
-@import "./components/inputs/input-checkbox.scss";
-@import "./components/inputs/input-links.scss";
-@import "./components/inputs/input-QR-code.scss";
-@import "./components/inputs/input-file.scss";
-@import "./components/inputs/input-switch.scss";
-@import "./components/inputs/input-search.scss";
-@import "./components/inputs/input-little.scss";
-
-// Components - Cards
-@import "./components/cards/global.scss";
-
-// Views
-@import "./views/courses.scss";
