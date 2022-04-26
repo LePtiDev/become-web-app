@@ -10,8 +10,7 @@ import router from "./router";
 
 // SCSS
 import "@/scss/init.scss";
-
-// Global variable
+import "@/scss/plugins/tailwind.css";
 
 let app: any = null;
 app = new Vue({

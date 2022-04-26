@@ -1,10 +1,17 @@
 <template>
-  <div>
+  <Global v-if="$route.name !== 'home'">
     <router-view />
-  </div>
+  </Global>
+  <div v-else><router-view /></div>
 </template>
 <script lang="ts">
 import Vue from "vue";
 
-export default Vue.extend({});
+import Global from "./layouts/Global.vue";
+
+export default Vue.extend({
+  components: {
+    Global,
+  },
+});
 </script>

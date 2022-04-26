@@ -5,6 +5,11 @@
 */
 
 // Plugins
-@import "plugins/tailwind.css"
+@import "plugins/tailwind.css";
 
+// Components
+@import "./global/navbar.scss";
+@import "./global/layout.scss";
 
+// Views
+@import "./views/home.scss";

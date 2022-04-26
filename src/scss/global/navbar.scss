@@ -1,0 +1,24 @@
+/*
+    Type: Component navbar
+    Created by: Quentin Guerrier
+    Updated by: Quentin Guerrier
+*/
+
+.navbar {
+  position: fixed;
+  left: 0;
+  height: 0;
+  width: 100%;
+  height: 64px;
+  background-color: white;
+  padding: 0 5%;
+
+  .content {
+    position: fixed;
+    top: 16px;
+    height: 64px;
+    left: 5%;
+    width: 90%;
+    padding: 0 16px;
+  }
+}
