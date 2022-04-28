@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div x-data="{ open: false }" class="w-full text-gray-700 bg-cream">
+    <div class="w-full text-gray-700 bg-cream">
       <div class="flex flex-col max-w-screen-xl px-8 mx-auto md:items-center md:justify-between md:flex-row">
         <div class="flex flex-row items-center justify-between py-6">
           <div class="relative md:mt-8">
@@ -23,8 +23,8 @@
           <a class="mt-2 text-sm bg-transparent rounded-lg md:mt-8 md:ml-4 hover:text-gray-900 focus:outline-none focus:shadow-outline p-4" href="#about">A propos</a>
           <a class="mt-2 text-sm bg-transparent rounded-lg md:mt-8 md:ml-4 hover:text-gray-900 focus:outline-none focus:shadow-outline p-4" href="#school">L'école</a>
           <a class="mt-2 text-sm bg-transparent rounded-lg md:mt-8 md:ml-4 hover:text-gray-900 focus:outline-none focus:shadow-outline p-4" href="#tools">Nos outils</a>
-          <a class="px-10 py-3 mt-2 text-sm text-center bg-white text-gray-800 rounded-full md:mt-8 md:ml-4" href="#">Login</a>
-          <a class="px-10 py-3 mt-2 text-sm text-center bg-yellow-500 text-white rounded-full md:mt-8 md:ml-4" href="#">Sign Up</a>
+          <router-link class="px-10 py-3 mt-2 text-sm text-center bg-white text-gray-800 rounded-full md:mt-8 md:ml-4" :to="{ name: 'signin' }">Se connecter</router-link>
+          <router-link class="px-10 py-3 mt-2 text-sm text-center bg-yellow-500 text-white rounded-full md:mt-8 md:ml-4" :to="{ name: 'signup' }">S'inscrire</router-link>
         </nav>
       </div>
     </div>
@@ -32,7 +32,7 @@
       <div class="max-w-screen-xl px-8 mx-auto flex flex-col lg:flex-row items-start">
         <!--Left Col-->
         <div class="flex flex-col w-full lg:w-6/12 justify-center lg:pt-24 items-start text-center lg:text-left mb-5 md:mb-0">
-          <h1 data-aos="fade-right" data-aos-once="true" class="my-4 text-5xl font-bold leading-tight text-darken"><span class="text-yellow-500">Se formez</span> enfin accessible pour tous</h1>
+          <h1 data-aos="fade-right" data-aos-once="true" class="my-4 text-5xl font-bold leading-tight text-darken"><span class="text-yellow-500">Se former</span> enfin accessible pour tous</h1>
           <p data-aos="fade-down" data-aos-once="true" data-aos-delay="300" class="leading-normal text-2xl mb-8">Become s'occupe de vous formez sur les metiers du digital en fonction de vos besoins</p>
           <div data-aos="fade-up" data-aos-once="true" data-aos-delay="700" class="w-full md:flex items-center justify-center lg:justify-start md:space-x-5">
             <button class="lg:mx-0 bg-yellow-500 text-white text-xl font-bold rounded-full py-4 px-9 focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out">En savoir plus</button>
@@ -103,8 +103,8 @@
         <div data-aos="flip-down" class="text-center max-w-screen-md mx-auto">
           <h1 class="text-3xl font-bold mb-4">Pourquoi <span class="text-yellow-500">Become ?</span></h1>
           <p class="text-gray-500">
-            Nous vous proposons un parcours scolaire adapter a vos besoins. Vous pouvez revoir les cours que vous ne comprenez pas ou ne pas prendres les cours que vous connaissez déjà. Vous travaillez en équipe sur des projets concret afin
-            d'appliquer toute vos connaisses.
+            Nous vous proposons un parcours scolaire adapter à vos besoins. Vous pouvez revoir les cours que vous ne comprenez pas ou ne pas prendre les cours que vous connaissez déjà. Vous travaillez en équipe sur des projets concret afin
+            d'appliquer toutes vos connaissances.
           </p>
         </div>
         <div data-aos="fade-up" class="flex flex-col md:flex-row justify-center space-y-5 md:space-y-0 md:space-x-6 lg:space-x-10 mt-7">
@@ -193,8 +193,8 @@
               />
             </svg>
           </div>
-          <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">Créé votre emploie du temps</h1>
-          <p class="px-4 text-gray-500">Vous pouvez créer votre propre emploie du temps en fonction de vos besoin a l'aide de nos formations</p>
+          <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">Créé votre emploi du temps</h1>
+          <p class="px-4 text-gray-500">Vous pouvez créer votre propre emploi du temps en fonction de vos besoins à l'aide de nos formations</p>
         </div>
         <div data-aos="fade-up" data-aos-delay="300" class="bg-white shadow-xl p-6 text-center rounded-xl">
           <div style="background: #29b9e7" class="rounded-full w-16 h-16 flex items-center justify-center mx-auto shadow-lg transform -translate-y-12">
@@ -206,7 +206,7 @@
             </svg>
           </div>
           <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken lg:h-14 pt-3">Travail d'équipe</h1>
-          <p id="tools" class="px-4 text-gray-500">Car savoir travailler en équipe est important. Chez become vous trouverez des projets a réalisé en équipe tel que des hackatons</p>
+          <p id="tools" class="px-4 text-gray-500">Savoir travailler en équipe est important. Chez become vous trouverez des projets à réaliser en équipe tel que des hackatons</p>
         </div>
       </div>
 
@@ -216,7 +216,7 @@
         <div data-aos="fade-right" class="sm:w-1/2 relative">
           <div class="bg-yellow-500 rounded-full absolute w-12 h-12 z-0 -left-4 -top-3 animate-pulse"></div>
           <h1 class="font-semibold text-2xl relative z-50 text-darken lg:pr-10">Become est une école dans <span class="text-yellow-500">l'air du temps</span></h1>
-          <p class="py-5 lg:pr-32">Distanciel ou présentiel c'est vous qui choisissez. Chaque cours est proposer par plusieurs voie d'apprentissage comme l'écris, la vidéo ou encore avec un enseignant</p>
+          <p class="py-5 lg:pr-32">Distanciel ou présentiel c'est vous qui choisissez. Chaque cours est proposé par plusieurs voies d'apprentissage comme l'écris, la vidéo ou encore avec un enseignant</p>
         </div>
         <div data-aos="fade-left" class="sm:w-1/2 relative mt-10 sm:mt-0">
           <div style="background: #23bdee" class="floating w-24 h-24 absolute rounded-lg z-0 -top-3 -left-3"></div>
@@ -234,7 +234,7 @@
           <div style="background: #f56666" class="w-5 h-5 rounded-full absolute z-0 right-52 bottom-1 animate-ping"></div>
         </div>
         <div data-aos="fade-down" class="md:w-5/12 mt-20 md:mt-0 text-gray-500">
-          <h1 class="text-2xl font-semibold text-darken lg:pr-40">Une <span class="text-yellow-500">platforme</span> créer pour mieux vous accompagner</h1>
+          <h1 class="text-2xl font-semibold text-darken lg:pr-40">Une <span class="text-yellow-500">plateforme</span> créée pour mieux vous accompagner</h1>
           <div class="flex items-center space-x-5 my-5">
             <div class="flex-shrink bg-white shadow-lg rounded-full p-3 flex items-center justify-center">
               <svg class="w-4 h-4" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -244,7 +244,7 @@
                 <rect x="14.7727" y="14.1816" width="11.8182" height="11.8182" rx="2" fill="#F48C06" />
               </svg>
             </div>
-            <p>Liste des cours, emoploi du temps, choix des mocules</p>
+            <p>Liste des cours, emploi du temps, choix des modules</p>
           </div>
           <div class="flex items-center space-x-5 my-5">
             <div class="flex-shrink bg-white shadow-lg rounded-full p-3 flex items-center justify-center">
@@ -253,7 +253,7 @@
                 <rect width="21.2245" height="21.2245" rx="2" fill="#F48C06" />
               </svg>
             </div>
-            <p>Tous les cours déjà suivi pour les revoirs ou les appronfondir</p>
+            <p>Le contenu de tous vos cours sont disponibles pour les revoirs ou les appronfondir</p>
           </div>
           <div class="flex items-center space-x-5 my-5">
             <div class="flex-shrink bg-white shadow-lg rounded-full p-3 flex items-center justify-center">
@@ -264,7 +264,7 @@
                 />
               </svg>
             </div>
-            <p>Un réseaux interne de professionel et d'élèves pour mieux s'entraider.</p>
+            <p>Un réseau interne de professionels et d'élèves pour mieux s'entraider.</p>
           </div>
         </div>
       </div>
@@ -272,8 +272,8 @@
       <!-- Class Management Tools for Educators -->
       <div class="flex flex-col md:flex-row items-center mt-12">
         <div data-aos="fade-right" class="md:w-5/12">
-          <h1 class="text-darken font-semibold text-3xl leading-tight lg:pr-32"><span class="text-yellow-500">Un suivi</span> personaliser</h1>
-          <p class="my-5 lg:pr-14">Nous avons pour but de vous accompagner tout le long de votre formation. C'est pour cela que nous ne vous donnons pas de note mais uniquement des retours constructifs</p>
+          <h1 class="text-darken font-semibold text-3xl leading-tight lg:pr-32"><span class="text-yellow-500">Un suivi</span> personnalisé</h1>
+          <p class="my-5 lg:pr-14">Nous avons pour but de vous accompagner tout le long de votre formation. C'est pour cela que nous ne vous notons pas mais vous proposons des retours constructifs</p>
         </div>
         <img data-aos="fade-left" class="md:w-7/12" src="@/assets/img/gradebook.png" />
       </div>
@@ -289,7 +289,7 @@
             <h1 class="text-gray-400 tracking-widest text-sm">INTEGRATIONS</h1>
           </div>
           <h1 class="font-semibold text-darken text-2xl lg:pr-40">Des outils mit à disposition pour mieux <span class="text-yellow-500">apprendre</span></h1>
-          <p class="text-gray-500 my-5 lg:pr-20">Des outils digitaux spécialisé pour vous accompagner afin de vous garantir un accès à tous ce dont vous aurez besoin.</p>
+          <p class="text-gray-500 my-5 lg:pr-20">Des outils digitaux spécialisés pour vous accompagner afin de vous garantir un accès à tous ce dont vous aurez besoin.</p>
         </div>
       </div>
     </div>
@@ -297,15 +297,14 @@
     <footer class="mt-32 pb-2" style="background-color: rgba(37, 38, 65, 1)">
       <div class="max-w-lg mx-auto">
         <div class="text-center pb-16 pt-10">
-          <label class="text-gray-300 font-semibold">Subscribe to get our Newsletter</label>
+          <label class="text-gray-300 font-semibold">S'inscrire à la newsletter</label>
           <div class="px-5 sm:px-0 flex flex-col sm:flex-row sm:space-x-3 space-y-3 sm:space-y-0 justify-center mt-3">
-            <input type="email" placeholder="Your Email" class="rounded-full py-2 pl-5 bg-transparent border border-gray-400" />
-            <button type="submit" class="text-white w-40 sm:w-auto mx-auto sm:mx-0 font-semibold px-5 py-2 rounded-full" style="background: linear-gradient(105.5deg, #545ae7 19.57%, #393fcf 78.85%)">Subscribe</button>
+            <input type="email" placeholder="Votre email" class="rounded-full py-2 pl-5 bg-transparent border border-gray-400" />
+            <button type="submit" class="text-white w-40 sm:w-auto mx-auto sm:mx-0 font-semibold px-5 py-2 rounded-full" style="background: linear-gradient(105.5deg, #545ae7 19.57%, #393fcf 78.85%)">S'inscrire</button>
           </div>
         </div>
         <div class="flex items-center text-gray-400 text-sm justify-center">
-          <a href="" class="pr-3">Careers</a>
-          <a href="" class="border-l border-gray-400 px-3">Privacy</a>
+          <a href="" class="border-gray-400 px-3">Privacy</a>
           <a href="" class="border-l border-gray-400 pl-3">Terms & Conditions</a>
         </div>
         <div class="text-center text-white">
@@ -320,6 +319,11 @@
 import Vue from "vue";
 
 export default Vue.extend({
+  data() {
+    return {
+      open: false,
+    };
+  },
   methods: {},
 });
 </script>

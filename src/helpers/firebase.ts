@@ -1,270 +1,100 @@
 // FROM SHARED. DO NOT COPY
 
-import loggerHelper from "../loggerHelper";
 import * as _ from "lodash";
+import { db } from "../plugins/firebase";
 
-const containUndefinedValues = (data: any) => {
-  return false;
-};
+// Create Data
+export async function addDataToCollection(collection: string, data: any) {
+  return await db
+    .collection(collection)
+    .add(data)
+    .catch((e: any) => {
+      const error = "addDataToCollection - " + collection + " - " + e;
+      console.log(error);
+    });
+}
 
-export default class DBHelper {
-  db: any;
-  constructor(db: any) {
-    this.db = db;
+// Update Data
+export async function updateDataToCollection(collection: string, id: string, data: any) {
+  return await db
+    .collection(collection)
+    .doc(id)
+    .update(data)
+    .catch((e: any) => {
+      const error = "updateDataToCollection - " + collection + " - " + id + " - " + e;
+      console.log(error);
+    });
+}
+
+export async function deleteData(collection: string, id: string) {
+  return await db
+    .collection(collection)
+    .doc(id)
+    .delete()
+    .catch((e: any) => {
+      const error = "deleteData - " + collection + " - " + id + " - " + e;
+      console.log(error);
+    });
+}
+
+export async function getDocFromCollectionWithWhere(collection: string, arrayWhere: Array<any>) {
+  let docRef: any = db.collection(collection);
+  for (const prop in arrayWhere) {
+    docRef = docRef.where(prop, "==", arrayWhere[prop]);
   }
-  async batchAdd(collection: string, data: any) {
-    const batchArray = new Array();
-    batchArray.push(this.db.batch());
-    let operationCounter = 0;
-    let batchIndex = 0;
-    for (const document of data) {
-      const docRef = this.db.collection(collection).doc();
-      //console.log(docRef,document.id)
-      batchArray[batchIndex].set(docRef, document);
-      operationCounter++;
-      if (operationCounter === 499) {
-        batchArray.push(this.db.batch());
-        batchIndex++;
-        operationCounter = 0;
+  const result = await docRef
+    .get()
+    .then(function (snapshot: any) {
+      if (!snapshot.empty) {
+        const r: any = snapshot.docs[0].data();
+        r["id"] = snapshot.docs[0].id;
+        return r;
+      } else {
+        return false;
       }
-    }
+    })
+    .catch((e: any) => {
+      const error = "getDocFromCollectionWithWhere - " + collection + " - " + e;
+      console.log(error);
+    });
+  return result;
+}
 
-    batchArray.forEach(
-      async (batch: any) =>
-        await batch
-          .commit()
-          .then(function () {
-            //DO NTG
-          })
-          .catch((e: any) => {
-            loggerHelper.report("batchAdd - " + e);
-          }),
-    );
-    return batchArray;
-  }
-
-  async batchUpdate(collection: string, data: any) {
-    const batchArray = new Array();
-    batchArray.push(this.db.batch());
-    let operationCounter = 0;
-    let batchIndex = 0;
-    for (const document of data) {
-      const docRef = this.db.collection(collection).doc(document.id);
-      const doc = { ...document };
-      delete doc.id;
-
-      batchArray[batchIndex].update(docRef, doc);
-      operationCounter++;
-      if (operationCounter === 499) {
-        batchArray.push(this.db.batch());
-        batchIndex++;
-        operationCounter = 0;
+export async function getAllDataFromCollectionWithAll(collection: string, constraints: any) {
+  let returnArray = new Array();
+  let query: any = db.collection(collection);
+  const { where, orderBy, limit } = constraints || {};
+  if (where) {
+    where.forEach(async (cond: any) => {
+      if (cond.compare != "in") {
+        query = query.where(cond.field, cond.compare, cond.value);
       }
-    }
-
-    batchArray.forEach(
-      async (batch: any) =>
-        await batch
-          .commit()
-          .then(function () {
-            //DO NTG
-          })
-          .catch((e: any) => {
-            loggerHelper.report("batchUpdate- " + e);
-          }),
-    );
-    return batchArray;
+    });
   }
-
-  async batchSet(collection: string, data: any) {
-    const batchArray = new Array();
-    batchArray.push(this.db.batch());
-    let operationCounter = 0;
-    let batchIndex = 0;
-    for (const document of data) {
-      const docRef = this.db.collection(collection).doc(document.id);
-      const doc = { ...document };
-      delete doc.id;
-
-      batchArray[batchIndex].set(docRef, doc);
-      operationCounter++;
-      if (operationCounter === 499) {
-        batchArray.push(this.db.batch());
-        batchIndex++;
-        operationCounter = 0;
-      }
-    }
-
-    batchArray.forEach(
-      async (batch: any) =>
-        await batch
-          .commit()
-          .then(function () {
-            //DO NTG
-          })
-          .catch((e: any) => {
-            loggerHelper.report("batchSet- " + e);
-          }),
-    );
-    return batchArray;
+  if (orderBy) {
+    orderBy.forEach((cond: any) => {
+      query = query.orderBy(cond.field, cond.direction || "asc");
+    });
   }
-
-  async batchDelete(collection: string, data: any) {
-    const batchArray = new Array();
-    batchArray.push(this.db.batch());
-    let operationCounter = 0;
-    let batchIndex = 0;
-    for (const document of data) {
-      const docRef = this.db.collection(collection).doc(document.id);
-      //console.log(docRef,document.id)
-      batchArray[batchIndex].delete(docRef);
-      operationCounter++;
-      if (operationCounter === 499) {
-        batchArray.push(this.db.batch());
-        batchIndex++;
-        operationCounter = 0;
-      }
-    }
-
-    batchArray.forEach(
-      async (batch: any) =>
-        await batch
-          .commit()
-          .then(function () {
-            //DO NTG
-          })
-          .catch((e: any) => {
-            loggerHelper.report("batchDelete - Error " + e);
-          }),
-    );
-    return batchArray;
+  if (limit) {
+    query = query.limit(limit);
   }
+  let hasOneIn = false;
+  if (where) {
+    for (const cond of where) {
+      if (cond.compare == "in") {
+        hasOneIn = true;
+        const equalToChunked = _.chunk(cond.value, 10);
 
-  async setDataToCollection(collection: string, id: string, data: any) {
-    if (!containUndefinedValues(data)) {
-      return await this.db
-        .collection(collection)
-        .doc(id)
-        .set(data)
-        .catch((e: any) => {
-          const error = "setDataToCollection - " + collection + " - " + id + " - " + e;
-          loggerHelper.report(error);
-        });
-    } else {
-      const error = "setDataToCollection - " + collection + " - " + id + " - " + "Data contain undefined values";
-      loggerHelper.report(error);
-      return {
-        error: error,
-        data: data,
-      };
-    }
-  }
+        for (let i = 0; i < equalToChunked.length; i++) {
+          const snapshot = await query
+            .where(cond.field, "in", equalToChunked[i])
+            .get()
+            .catch((e: any) => {
+              const error = "getAllDataFromCollectionWithAll - " + collection + " - " + cond.compare + " - " + e;
+              console.log(error);
+            });
 
-  async setAndUpdateDataToCollection(collection: string, id: string, data: any, merge: boolean = false) {
-    if (!containUndefinedValues(data)) {
-      return await this.db
-        .collection(collection)
-        .doc(id)
-        .set(data, { merge })
-        .catch((e: any) => {
-          const error = "setDataToCollection - " + collection + " - " + id + " - " + e;
-          loggerHelper.report(error);
-        });
-    } else {
-      const error = "setDataToCollection - " + collection + " - " + id + " - " + "Data contain undefined values";
-      loggerHelper.report(error);
-      return {
-        error: error,
-        data: data,
-      };
-    }
-  }
-
-  async addDataToCollection(collection: string, data: any) {
-    if (!containUndefinedValues(data)) {
-      return await this.db
-        .collection(collection)
-        .add(data)
-        .catch((e: any) => {
-          const error = "addDataToCollection - " + collection + " - " + e;
-          loggerHelper.report(error);
-        });
-    } else {
-      const error = "addDataToCollection - " + collection + " - " + "Data contain undefined values";
-      loggerHelper.report(error);
-      return {
-        error: error,
-        data: data,
-      };
-    }
-  }
-
-  async updateDataToCollection(collection: string, id: string, data: any) {
-    if (!containUndefinedValues(data)) {
-      return await this.db
-        .collection(collection)
-        .doc(id)
-        .update(data)
-        .catch((e: any) => {
-          const error = "updateDataToCollection - " + collection + " - " + id + " - " + e;
-          loggerHelper.report(error);
-        });
-    } else {
-      const error = "updateDataToCollection - " + collection + " - " + id + " - " + "Data contain undefined values";
-      loggerHelper.report(error);
-      return {
-        error: error,
-        data: data,
-      };
-    }
-  }
-
-  async deleteData(collection: string, id: string) {
-    return await this.db
-      .collection(collection)
-      .doc(id)
-      .delete()
-      .catch((e: any) => {
-        const error = "deleteData - " + collection + " - " + id + " - " + e;
-        loggerHelper.report(error);
-      });
-  }
-
-  async getAllDataFromCollectionBetweenDates(collection: string, whatIs: string, startDate: Date, endDate: Date) {
-    const returnArray: Array<any> = [];
-    const docRef = this.db.collection(collection);
-    await docRef
-      .where(whatIs, ">", startDate)
-      .where(whatIs, "<", endDate)
-      .get()
-      .then(function (snapshot: any) {
-        snapshot.forEach(function (doc: any) {
-          if (doc && doc.exists && doc.data && doc.id) {
-            const result = doc.data();
-            result["id"] = doc.id;
-            returnArray.push(result);
-          }
-        });
-      })
-      .catch((e: any) => {
-        const error = "getAllDataFromCollectionBetweenDates - " + collection + " - " + whatIs + " - " + e;
-        loggerHelper.report(error);
-      });
-    return returnArray;
-  }
-
-  async getAllDataFromCollectionWithWhereIn(collection: string, whatIs: string, equalTo: Array<any>, arrayWhere: Array<any> = []) {
-    const returnArray = new Array();
-    const equalToChunked = _.chunk(equalTo, 10);
-    let docRef = this.db.collection(collection);
-    for (const prop in arrayWhere) {
-      docRef = docRef.where(prop, "==", arrayWhere[prop]);
-    }
-    for (let i = 0; i < equalToChunked.length; i++) {
-      await docRef
-        .where(whatIs, "in", equalToChunked[i])
-        .get()
-        .then(function (snapshot: any) {
           snapshot.forEach(function (doc: any) {
             if (doc && doc.exists && doc.data && doc.id) {
               const result = doc.data();
@@ -272,108 +102,26 @@ export default class DBHelper {
               returnArray.push(result);
             }
           });
-        })
-        .catch((e: any) => {
-          const error = "getAllDataFromCollectionWithWhereIn - " + collection + " - " + whatIs + " - " + e;
-          loggerHelper.report(error);
-        });
-    }
-    return returnArray;
-  }
-
-  async getAllDataFromCollectionFromIds(collection: string, equalTo: Array<any>) {
-    const returnArray: Array<any> = [];
-    if (equalTo?.length) {
-      const docRef = this.db.collection(collection);
-      const equalToUniq = _.uniq(equalTo);
-
-      const equalToChunked = _.chunk(equalToUniq, 10);
-      for (const tenBloc of equalToChunked) {
-        await docRef
-          .where("__name__", "in", tenBloc)
-          .get()
-          .then(function (snapshot: any) {
-            snapshot.forEach(function (doc: any) {
-              if (doc && doc.exists && doc.data && doc.id) {
-                const result = doc.data();
-                result["id"] = doc.id;
-                returnArray.push(result);
-              }
-            });
-          })
-          .catch((e: any) => {
-            const error = "getAllDataFromCollectionFromIds - " + collection + " - " + e;
-            loggerHelper.report(error);
-          });
+        }
       }
     }
-    return returnArray;
   }
-
-  async getAllDataFromCollectionWithWhere(collection: string, whatIs: string, equalTo: any) {
-    const returnArray: Array<any> = [];
-    const docRef = this.db.collection(collection);
-    await docRef
-      .where(whatIs, "==", equalTo)
-      .get()
-      .then(function (snapshot: any) {
-        snapshot.forEach(function (doc: any) {
-          if (doc && doc.exists && doc.data && doc.id) {
-            const result = doc.data();
-            result["id"] = doc.id;
-            returnArray.push(result);
-          }
-        });
-      })
-      .catch((e: any) => {
-        const error = "getAllDataFromCollectionWithWhere - " + collection + " - " + whatIs + " - " + equalTo + " - " + e;
-        loggerHelper.report(error);
-      });
-    return returnArray;
+  if (!hasOneIn) {
+    await query.get().then((snapshot: any) => {
+      returnArray = snapshot.docs.map((doc: any) => ({
+        ...(doc || {}).data(),
+        id: doc.id,
+      }));
+    });
   }
-
-  async getAllDataFromCollection(collection: string) {
-    const returnArray: Array<any> = [];
-    const docRef = this.db.collection(collection);
-    await docRef
-      .get()
-      .then(function (snapshot: any) {
-        snapshot.forEach(function (doc: any) {
-          if (doc && doc.exists && doc.data && doc.id) {
-            const result = doc.data();
-            result["id"] = doc.id;
-            returnArray.push(result);
-          }
-        });
-      })
-      .catch((e: any) => {
-        const error = "getAllDataFromCollection - " + collection + " - " + e;
-        loggerHelper.report(error);
-      });
-    return returnArray;
+  return returnArray;
+}
+/*
+export default class DBHelper {
+  db: any;
+  constructor(db: any) {
+    this.db = db;
   }
-
-  async getDocFromCollectionOnSnapshot(collection: string, docId: string, callBack: any) {
-    if (docId) {
-      const docRef = this.db.collection(collection);
-      const snap = docRef.doc(docId).onSnapshot(
-        (doc: any) => {
-          if (doc && doc.exists && doc.data && doc.id) {
-            const resultQuery: any = doc.data();
-            resultQuery.id = doc.id;
-            callBack(resultQuery);
-            return doc;
-          }
-        },
-        (e: any) => {
-          const error = `getDocFromCollectionOnSnapshot - ${collection} - ${docId} - ${e}`;
-          loggerHelper.report(error);
-        },
-      );
-      return snap;
-    }
-  }
-
   async getDocFromCollection(collection: string, docId: string) {
     if (docId) {
       const docRef = this.db.collection(collection);
@@ -389,33 +137,9 @@ export default class DBHelper {
         })
         .catch((e: any) => {
           const error = "getDocFromCollection - " + collection + " - " + docId + " - " + e;
-          loggerHelper.report(error);
         });
       return result;
     }
-  }
-
-  async getDocFromCollectionWithWhere(collection: string, arrayWhere: Array<any>) {
-    let docRef = this.db.collection(collection);
-    for (const prop in arrayWhere) {
-      docRef = docRef.where(prop, "==", arrayWhere[prop]);
-    }
-    const result = await docRef
-      .get()
-      .then(function (snapshot: any) {
-        if (!snapshot.empty) {
-          const r: any = snapshot.docs[0].data();
-          r["id"] = snapshot.docs[0].id;
-          return r;
-        } else {
-          return false;
-        }
-      })
-      .catch((e: any) => {
-        const error = "getDocFromCollectionWithWhere - " + collection + " - " + e;
-        loggerHelper.report(error);
-      });
-    return result;
   }
 
   async getAllDataFromCollectionWithWhereArrayOnSnapshot(collection: string, arrayWhere: Array<any>, callBack: any) {
@@ -465,22 +189,6 @@ export default class DBHelper {
 
     return returnArray;
   }
-
-  /* Usage example : 
-  const constraints: any = {
-    where: [
-      {
-        field: "deep_link_ids",
-        compare: "array-contains",
-        value: examId,
-      },
-      {
-        field: "type",
-        compare: "==",
-        value: "checkup_exam"
-      }
-    ],
-  };*/
   async getAllDataFromCollectionWithAll(collection: string, constraints: any) {
     let returnArray = new Array();
     let query = this.db.collection(collection);
@@ -652,3 +360,4 @@ export default class DBHelper {
     return returnArray;
   }
 }
+*/

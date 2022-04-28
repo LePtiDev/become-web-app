@@ -1,8 +1,8 @@
 <template>
-  <Global v-if="$route.name !== 'home'">
+  <Global v-if="$route.meta.layout">
     <router-view />
   </Global>
-  <div v-else><router-view /></div>
+  <router-view v-else />
 </template>
 <script lang="ts">
 import Vue from "vue";

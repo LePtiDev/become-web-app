@@ -3,13 +3,13 @@
     <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
       <div class="mx-auto w-full max-w-sm lg:w-96">
         <div>
-          <h2 class="mt-6 text-3xl font-extrabold text-gray-900">S'inscrire</h2>
+          <h2 class="mt-6 text-3xl font-extrabold text-gray-900">Connexion</h2>
         </div>
 
         <div class="mt-8">
           <div>
             <div>
-              <p class="text-sm font-medium text-gray-700">S'inscrire avec</p>
+              <p class="text-sm font-medium text-gray-700">Connecter vous avec</p>
 
               <div class="mt-1 grid grid-cols-3 gap-3">
                 <div>
@@ -62,16 +62,26 @@
 
           <div class="mt-6">
             <form action="#" method="POST" class="space-y-6">
-              <Binput v-model="form.first_name" :error="errors.first_name" label="Prénom" placeholder="Jean" name="first_name" autocomplete="given-name" type="text" />
-              <Binput v-model="form.last_name" :error="errors.last_name" label="Nom" placeholder="Dupont" name="last_name" autocomplete="family-name" type="text" />
               <Binput v-model="form.email" :error="errors.email" label="Adresse email" placeholder="jean.dupont@mail.com" name="email" autocomplete="email" type="email" />
-              <Binput v-model="form.password" :error="errors.password" label="Mot de passe" placeholder="************" name="password" autocomplete="new-password" type="password" />
+              <Binput v-model="form.password" :error="errors.password" label="Mot de passe" placeholder="************" name="password" autocomplete="current-password" type="password" />
+
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input id="remember-me" name="remember-me" v-model="form.remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+                  <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Se souvenir de moi </label>
+                </div>
+
+                <div class="text-sm">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Mot de passe oublié ? </a>
+                </div>
+              </div>
+
               <div>
-                <Bbutton @click="signUp">S'inscrire</Bbutton>
+                <Bbutton @click="signIn">Connexion</Bbutton>
               </div>
               <div class="text-sm">
-                <span>Déjà un compte ?</span>
-                <router-link :to="{ name: 'signin' }" class="font-medium text-indigo-600 hover:text-indigo-500"> Se connecter </router-link>
+                <span>Pas encore de compte ?</span>
+                <router-link :to="{ name: 'signup' }" class="font-medium text-indigo-600 hover:text-indigo-500"> S'inscrire </router-link>
               </div>
             </form>
           </div>
@@ -86,11 +96,11 @@
 <script lang="ts">
 import Vue from "vue";
 import Bbutton from "./../components/Bbutton.vue";
+import { validate } from "../helpers/form";
 
 // Helpers
 import { User } from "../controller/user";
 import { mapState } from "vuex";
-import { validate } from "../helpers/form";
 import Binput from "../components/Binput.vue";
 
 export default Vue.extend({
@@ -98,15 +108,12 @@ export default Vue.extend({
     return {
       errors: {},
       form: {
-        first_name: "",
-        last_name: "",
         email: "",
         password: "",
+        remember: false,
       },
       rules: {
-        first_name: ["require"],
-        last_name: ["require"],
-        email: ["require", "email"],
+        email: ["require"],
         password: ["require"],
       },
     };
@@ -119,11 +126,11 @@ export default Vue.extend({
     ...mapState("user", ["userData"]),
   },
   methods: {
-    signUp() {
+    signIn() {
       this.errors = validate(this.form, this.rules);
       if (!this.errors) {
         const user: any = new User();
-        user.createUser(this.form, "dashboard");
+        user.setLogin(this.form, "dashboard");
       }
     },
   },
