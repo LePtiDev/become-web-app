@@ -47,6 +47,26 @@ const routes = [
       auth: true,
     },
   },
+  {
+    path: "/courses",
+    name: "courses",
+    // @ts-ignore
+    component: () => import("@/views/Courses.vue"),
+    meta: {
+      layout: true,
+      auth: true,
+    },
+  },
+  {
+    path: "/agenda",
+    name: "agenda",
+    // @ts-ignore
+    component: () => import("@/views/Agenda.vue"),
+    meta: {
+      layout: true,
+      auth: true,
+    },
+  },
 ];
 
 const router = new VueRouter({

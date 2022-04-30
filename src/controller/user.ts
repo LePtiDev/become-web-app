@@ -6,9 +6,9 @@ import router from "../router";
 
 class User {
   // Create a new user
-  createUser(type: string, form: any) {
+  async createUser(type: string, form: any) {
     if (type == "email") {
-      firebaseApp
+      await firebaseApp
         .auth()
         .createUserWithEmailAndPassword(form.email, form.password)
         .then((userCredential: any) => {

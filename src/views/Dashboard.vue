@@ -1,16 +1,24 @@
 <template>
-  <div>Coucou vous etes bien sur le {{ test }}</div>
+  <div class="">
+    <header class="">
+      <div class="px-24 py-4">
+        <h1 class="text-lg leading-6 font-semibold text-gray-900">Dashboard</h1>
+      </div>
+    </header>
+    <main>
+      <div class="px-24">
+        <!--         <BCard title="hello">
+          <template v-slot:header-right>coucou</template>
+        </BCard> -->
+      </div>
+    </main>
+  </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
-import Bbutton from "../components/Bbutton.vue";
-import Binput from "../components/Binput.vue";
+import BCard from "../components/BCard.vue";
+
 export default Vue.extend({
-  components: { Binput },
-  data() {
-    return {
-      test: "",
-    };
-  },
+  components: { BCard },
 });
 </script>

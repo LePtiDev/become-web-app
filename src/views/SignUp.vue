@@ -123,7 +123,7 @@ export default Vue.extend({
       this.errors = validate(this.form, this.rules);
       if (!this.errors) {
         const user: any = new User();
-        user.createUser(this.form, "dashboard");
+        user.createUser("email", this.form);
       }
     },
   },

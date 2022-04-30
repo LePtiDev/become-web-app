@@ -1,5 +1,5 @@
 <template>
-  <Global v-if="$route.meta.layout">
+  <Global class="bg-gray-100" v-if="$route.meta.layout">
     <router-view />
   </Global>
   <router-view v-else />
