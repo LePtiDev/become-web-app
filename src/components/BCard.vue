@@ -4,7 +4,7 @@
       <h2 class="text-lg font-regular text-gray-900">{{ title }}</h2>
       <slot name="header-right" />
     </div>
-    <div class="px-4 py-4">
+    <div class="px-4">
       <slot />
     </div>
     <!-- Remplacer par une div avec des boutons -->
@@ -16,6 +16,8 @@ import Vue from "vue";
 export default Vue.extend({
   props: {
     title: String,
+    teacher: String,
+    image: String,
   },
 });
 </script>
