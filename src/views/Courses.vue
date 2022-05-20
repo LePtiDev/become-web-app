@@ -1,8 +1,8 @@
 <template>
   <div class="">
-    <Bheader title="Welcome back !" subtitle="Let check all your courses">
+    <Bheader title="Welcome back !">
       <template v-slot:rightNav>
-        <Bbutton>
+        <Bbutton type="secondary">
           Voir mes cours
         </Bbutton>
       </template>
