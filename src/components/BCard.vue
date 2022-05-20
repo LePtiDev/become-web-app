@@ -1,6 +1,6 @@
 <template>
   <div class="bg-white overflow-hidden shadow rounded-lg">
-    <div v-if="title" class="px-4 py-5 sm:px-6 flex justify-between">
+    <div v-if="title" class="px-4 pt-4 sm:px-6 flex justify-between">
       <h2 class="text-lg font-regular text-gray-900">{{ title }}</h2>
       <slot name="header-right" />
     </div>
