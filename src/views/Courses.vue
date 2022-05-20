@@ -1,16 +1,19 @@
 <template>
   <div class="">
-    <header class="">
-      <div class="px-24 py-4">
-        <h1 class="text-lg leading-6 font-semibold text-gray-900">Cours</h1>
-      </div>
-    </header>
-    <main>
-      <div class="px-24"></div>
-    </main>
+    <Bheader title="Welcome back !" subtitle="Let check all your courses">
+      <template v-slot:rightNav>
+        <Bbutton>
+          Voir mes cours
+        </Bbutton>
+      </template>
+    </Bheader>
   </div>
 </template>
 <script lang="ts">
+import Bheader from "./../components/Bheader.vue";
+import Bbutton from "./../components/Bbutton.vue";
 import Vue from "vue";
-export default Vue.extend({});
+export default Vue.extend({
+
+});
 </script>
