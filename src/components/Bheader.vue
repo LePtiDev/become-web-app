@@ -1,6 +1,6 @@
 <template>
-  <header class="bg-gray-50">
-    <div class="px-2 py-6 mx-16 sm:py-10 sm:px-4 lg:px-6">
+  <header class="bg-gray-50 mb-4">
+    <div class="px-2 py-6 mx-16 sm:py-6 sm:px-4 lg:px-6">
       <div class="sm:justify-between sm:items-center sm:flex">
         <div class="text-center sm:text-left">
           <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
