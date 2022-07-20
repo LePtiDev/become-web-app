@@ -9,7 +9,7 @@
     </Bheader>
     <main>
       <div class="px-24 flex flex-wrap justify-between">
-        <BCard class="mb-6" v-for="course in courses" :key="course.title" :title="course.title" :teacher="course.teacher" :image="course.image">
+        <BCard class="mb-6 w-1/4" v-for="course in courses" :key="course.title" :title="course.title" :teacher="course.teacher" :image="course.image">
           <template v-slot:header-right>
             <p>{{ course.teacher }}</p>
           </template>
