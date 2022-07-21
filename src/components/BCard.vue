@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-white overflow-hidden shadow rounded-lg">
+  <div class="bg-white overflow-hidden shadow rounded-lg" @click="cardClicked">
     <img v-if="image" class="" :src="image" alt="course">
     <div v-if="title" class="px-4 pt-4 sm:px-6 flex justify-between">
       <h2 class="text-lg font-bold text-gray-900">{{ title }}</h2>
@@ -20,5 +20,10 @@ export default Vue.extend({
     teacher: String,
     image: String,
   },
+  methods: {
+    cardClicked() {
+      this.$emit("clicked");
+    }
+  }
 });
 </script>

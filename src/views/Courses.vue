@@ -9,7 +9,7 @@
     </Bheader>
     <main>
       <div class="px-24 flex flex-wrap justify-between">
-        <BCard class="mb-6 w-1/4" v-for="course in getCourses" :key="course.id" :title="course.title" :teacher="course.teacher" :image="course.image">
+        <BCard class="mb-6 w-1/4" v-for="course in getCourses" :key="course.id" :name="course.name" :teacher="course.teacher" :image="course.image" @clicked="addCourse(course.id)">
           <template v-slot:header-right>
             <p>{{ course.teacher }}</p>
           </template>
@@ -27,6 +27,11 @@ export default Vue.extend({
   computed: {
     getCourses() {
       return this.$store.getters.getAllCourses;
+    }
+  },
+  methods: {
+    addCourse(course: Object): void {
+      this.$store.dispatch("addCourseInAgenda", course);
     }
   }
 });
