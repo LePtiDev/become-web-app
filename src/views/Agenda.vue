@@ -4,7 +4,7 @@
     <main>
       <div class="px-24">
         <BCard title="Cours d'aujourd'hui">
-          <Bdatatable edit :header="header" :data="courses"/>
+          <Bdatatable edit :header="header" :data="getAllCoursesInAgenda"/>
         </BCard>
       </div>
     </main>
@@ -17,23 +17,15 @@ import Bheader from "../components/Bheader.vue";
 import BCard from "../components/BCard.vue";
 
 export default Vue.extend({
-  data(){
-    return {
-      courses: [
-        {
-          id: "1",
-          name: "Node.js",
-          module: "développeur"
-        }
-      ]
-    }
-  },
   components: {
     Bdatatable,
     BCard,
     Bheader
   },
   computed: {
+    getAllCoursesInAgenda() {
+      return this.$store.getters.getCoursesInAgenda;
+    },
     header(){
       return [
         {
@@ -44,6 +36,10 @@ export default Vue.extend({
           name: "Nom",
           value: "name"
         },
+        {
+          name: "Professeur",
+          value: "teacher"
+        }
       ]
     }
   }
