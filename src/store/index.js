@@ -42,7 +42,12 @@ export default new Vuex.Store({
   mutations: {
     addCourseInAgenda(state, id) {
       const course = state.courses.find(course => course.id === id)
-      state.coursesInAgenda.push(course)
+      const checkDuplicateCourse = state.coursesInAgenda.find(course => course.id === id)
+      if(checkDuplicateCourse) {
+        alert(`${course.name} has already been added`)
+      } else {
+        state.coursesInAgenda.push(course)
+      }
     }
   },
   actions: {
