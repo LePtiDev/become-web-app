@@ -7,9 +7,9 @@
     </header>
     <main>
       <div class="px-24">
-        <!--         <BCard title="hello">
+        <BCard title="hello">
           <template v-slot:header-right>coucou</template>
-        </BCard> -->
+        </BCard>
       </div>
     </main>
   </div>
