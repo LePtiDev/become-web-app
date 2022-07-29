@@ -33,7 +33,7 @@
         <!--Left Col-->
         <div class="flex flex-col w-full lg:w-6/12 justify-center lg:pt-24 items-start text-center lg:text-left mb-5 md:mb-0">
           <h1 data-aos="fade-right" data-aos-once="true" class="my-4 text-5xl font-bold leading-tight text-darken"><span class="text-yellow-500">Se former</span> est enfin accessible pour tous</h1>
-          <p data-aos="fade-down" data-aos-once="true" data-aos-delay="300" class="leading-normal text-2xl mb-8">Become s'occupe de vous formez sur les metiers du digital en fonction de vos besoins</p>
+          <p data-aos="fade-down" data-aos-once="true" data-aos-delay="300" class="leading-normal text-2xl mb-8">Become s'occupe de vous former sur les metiers du digital en fonction de vos besoins</p>
           <div data-aos="fade-up" data-aos-once="true" data-aos-delay="700" class="w-full md:flex items-center justify-center lg:justify-start md:space-x-5">
             <button class="lg:mx-0 bg-yellow-500 text-white text-xl font-bold rounded-full py-4 px-9 focus:outline-none transform transition hover:scale-110 duration-300 ease-in-out">En savoir plus</button>
           </div>
@@ -103,7 +103,7 @@
         <div data-aos="flip-down" class="text-center max-w-screen-md mx-auto">
           <h1 class="text-3xl font-bold mb-4">Pourquoi <span class="text-yellow-500">Become ?</span></h1>
           <p class="text-gray-500">
-            Nous vous proposons un parcours scolaire adapter à vos besoins. Vous pouvez revoir les cours que vous ne comprenez pas ou ne pas prendre les cours que vous connaissez déjà. Vous travaillez en équipe sur des projets concret afin
+            Nous vous proposons un parcours scolaire adapté à vos besoins. Vous pouvez revoir les cours que vous ne comprenez pas ou ne pas prendre les cours que vous connaissez déjà. Vous travaillez en équipe sur des projets concret afin
             d'appliquer toutes vos connaissances.
           </p>
         </div>
@@ -129,8 +129,8 @@
 
       <!-- All-In-One Cloud Software. -->
       <div data-aos="flip-up" class="max-w-xl mx-auto text-center mt-24">
-        <h1 class="font-bold text-darken my-3 text-2xl">Tout à porter <span class="text-yellow-500">de main.</span></h1>
-        <p class="leading-relaxed text-gray-500">Become est une école qui vous porprose de vous formez au métier du digital en s'adaptant à vos besoins.</p>
+        <h1 class="font-bold text-darken my-3 text-2xl">Tout à portée <span class="text-yellow-500">de main.</span></h1>
+        <p class="leading-relaxed text-gray-500">Become est une école qui vous propose de vous former au métier du digital en s'adaptant à vos besoins.</p>
       </div>
       <!-- card -->
       <div class="grid md:grid-cols-3 gap-14 md:gap-5 mt-20">
@@ -193,7 +193,7 @@
               />
             </svg>
           </div>
-          <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">Créé votre emploi du temps</h1>
+          <h1 class="font-medium text-xl mb-3 lg:px-14 text-darken">Créer votre emploi du temps</h1>
           <p class="px-4 text-gray-500">Vous pouvez créer votre propre emploi du temps en fonction de vos besoins à l'aide de nos formations</p>
         </div>
         <div data-aos="fade-up" data-aos-delay="300" class="bg-white shadow-xl p-6 text-center rounded-xl">
@@ -216,7 +216,7 @@
         <div data-aos="fade-right" class="sm:w-1/2 relative">
           <div class="bg-yellow-500 rounded-full absolute w-12 h-12 z-0 -left-4 -top-3 animate-pulse"></div>
           <h1 class="font-semibold text-2xl relative z-50 text-darken lg:pr-10">Become est une école dans <span class="text-yellow-500">l'air du temps</span></h1>
-          <p class="py-5 lg:pr-32">Distanciel ou présentiel c'est vous qui choisissez. Chaque cours est proposé par plusieurs voies d'apprentissage comme l'écris, la vidéo ou encore avec un enseignant</p>
+          <p class="py-5 lg:pr-32">L'apprentissage digital n'a jamais été aussi simple. Les cours sont 100% en distentiel</p>
         </div>
         <div data-aos="fade-left" class="sm:w-1/2 relative mt-10 sm:mt-0">
           <div style="background: #23bdee" class="floating w-24 h-24 absolute rounded-lg z-0 -top-3 -left-3"></div>
@@ -253,7 +253,7 @@
                 <rect width="21.2245" height="21.2245" rx="2" fill="#F48C06" />
               </svg>
             </div>
-            <p>Le contenu de tous vos cours sont disponibles pour les revoirs ou les appronfondir</p>
+            <p>Le contenu de tout vos cours sont disponibles pour les revoirs ou les appronfondir</p>
           </div>
           <div class="flex items-center space-x-5 my-5">
             <div class="flex-shrink bg-white shadow-lg rounded-full p-3 flex items-center justify-center">
@@ -288,7 +288,7 @@
             <span class="border border-gray-300 w-14 absolute"></span>
             <h1 class="text-gray-400 tracking-widest text-sm">INTEGRATIONS</h1>
           </div>
-          <h1 class="font-semibold text-darken text-2xl lg:pr-40">Des outils mit à disposition pour mieux <span class="text-yellow-500">apprendre</span></h1>
+          <h1 class="font-semibold text-darken text-2xl lg:pr-40">Des outils mis à disposition pour mieux <span class="text-yellow-500">apprendre</span></h1>
           <p class="text-gray-500 my-5 lg:pr-20">Des outils digitaux spécialisés pour vous accompagner afin de vous garantir un accès à tous ce dont vous aurez besoin.</p>
         </div>
       </div>
