@@ -14,7 +14,7 @@
               <tr :key="row.id" v-for="row in data">
                 <td :key="row.id + '-' + prop.name" v-for="prop in header" class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{row[prop.value]}}</td>
                 <td v-if="edit" class="relative whitespace-nowrap py-4 pl-3 pr-4 text-sm font-medium sm:pr-6">
-                  <a href="#" class="text-indigo-600 hover:text-indigo-900">Modifier</a>
+                  <a href="#" @click="removeCourse(row)" class="text-indigo-600 hover:text-indigo-900">Supprimer</a>
                 </td>
               </tr>
             </tbody>
@@ -32,5 +32,10 @@ export default Vue.extend({
     data: Array,
     edit: Boolean,
   },
+  methods: {
+    removeCourse(course: Object): void {
+      this.$store.dispatch("removeCourseInAgenda", course);
+    }
+  }
 });
 </script>

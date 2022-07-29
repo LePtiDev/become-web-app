@@ -41,18 +41,26 @@ export default new Vuex.Store({
   },
   mutations: {
     addCourseInAgenda(state, id) {
-      const course = state.courses.find(course => course.id === id)
-      const checkDuplicateCourse = state.coursesInAgenda.find(course => course.id === id)
+      const course = state.courses.find((course) => course.id === id)
+      const checkDuplicateCourse = state.coursesInAgenda.find((course) => course.id === id);
       if(checkDuplicateCourse) {
         alert(`${course.name} has already been added`)
       } else {
         state.coursesInAgenda.push(course)
       }
+    },
+    removeCourseInAgenda(state, route) {
+      const course = state.coursesInAgenda.find((course) => course.id === route.id)
+      const index = state.coursesInAgenda.indexOf(course)
+      state.coursesInAgenda.splice(index, 1)
     }
   },
   actions: {
     addCourseInAgenda: ({commit}, id) => {
       commit('addCourseInAgenda', id)
+    },
+    removeCourseInAgenda: ({commit}, route) => {
+      commit('removeCourseInAgenda', route)
     },
   },
   modules: {
